@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{83515dec-41fd-47e3-ac98-94a0d894de78}">
+		<property name="color">
+			<value>Red</value>
+		</property>
+		<property name="name">
+			<value>OnLevelCombat</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{988e2bf4-846d-4fe2-9b07-03c58abda2a5}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{b1072d25-8ef4-4273-9fc4-c7e59b47c4b1}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{ee495e29-7ea1-4d92-a09b-c0cdbc23a512}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{988e2bf4-846d-4fe2-9b07-03c58abda2a5}">
+		<relationship name="effects">
+			<destination>{9cdd55be-2ecf-4eea-bd48-dd148c55e9bb}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{b1072d25-8ef4-4273-9fc4-c7e59b47c4b1}" />
+	<object class="MixerBusFader" id="{9cdd55be-2ecf-4eea-bd48-dd148c55e9bb}" />
+</objects>
