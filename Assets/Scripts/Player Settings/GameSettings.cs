@@ -32,13 +32,13 @@ public class GameSettings : MonoBehaviour
             SetFrameRate(targetFrameRate);
 
         if (hideCursor)
-            HideCursor(true);
+            HideCursor(hideCursor);
 
         if (lockCursor)
-            LockCursor(true);
+            LockCursor(lockCursor);
 
         if (confineCursor)
-            ConfineCursor(true);
+            ConfineCursor(confineCursor);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class GameSettings : MonoBehaviour
 
     public void HideCursor(bool toggle)
     {
-        Cursor.visible = toggle;
+        Cursor.visible = !toggle;
     }
 
     public void LockCursor(bool toggle)
