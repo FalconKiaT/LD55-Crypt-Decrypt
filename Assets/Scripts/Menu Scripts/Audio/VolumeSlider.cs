@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// *************** NOT WORKING AS OF YET. NEEDS TO BE FIXED TO OPERATE WITH A SLIDER!!!!
+
 public class VolumeSlider : MonoBehaviour
 {
     // I Added all this code so its easier to implement into UI without much effort
