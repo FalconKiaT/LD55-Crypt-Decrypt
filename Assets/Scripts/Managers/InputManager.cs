@@ -4,10 +4,27 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
-public class InputManager : MonoBehaviour, PlayerControls.IPlayerContolsActions
+public class InputManager : MonoBehaviour, PlayerControls.IPlayerActions
 {
     public Vector2 movementInput;
+    private PlayerControls playerControls;
 
+    private void Awake()
+    {
+        playerControls = new PlayerControls();
+        playerControls?.Player.SetCallbacks(this);
+        playerControls?.Enable();
+    }
+
+    private void OnEnable()
+    {
+        playerControls?.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControls?.Disable();
+    }
 
     /// <summary>
     /// Inputs for the player movement stored in a Vector2 called movementInput; You really don't need the y values since platformer
@@ -17,6 +34,7 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerContolsActions
     public void OnMove(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
+        Debug.Log(movementInput);
     }
 
     /// <summary>
@@ -27,7 +45,7 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerContolsActions
     public void OnJump(InputAction.CallbackContext context)
     {
         // TODO: Jumping and possible grounded check
-        throw new System.NotImplementedException();
+        
     }
 
     /// <summary>
@@ -38,7 +56,7 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerContolsActions
     public void OnSelect(InputAction.CallbackContext context)
     {
         // TODO: Select Units
-        throw new System.NotImplementedException();
+        
     }
 
     /// <summary>
@@ -49,6 +67,6 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerContolsActions
     public void OnCommand(InputAction.CallbackContext context)
     {
         // TODO: Command Units
-        throw new System.NotImplementedException();
+        
     }
 }
