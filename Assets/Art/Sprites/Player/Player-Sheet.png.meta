@@ -70,7 +70,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -84,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,7 +108,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -162,12 +162,12 @@ TextureImporter:
       name: Player-Sheet_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 143
-        width: 28
-        height: 32
+        x: 0
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,12 +183,12 @@ TextureImporter:
       name: Player-Sheet_1
       rect:
         serializedVersion: 2
-        x: 53
-        y: 143
-        width: 28
-        height: 31
+        x: 48
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,12 +204,12 @@ TextureImporter:
       name: Player-Sheet_2
       rect:
         serializedVersion: 2
-        x: 101
-        y: 143
-        width: 28
-        height: 30
+        x: 96
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,12 +225,12 @@ TextureImporter:
       name: Player-Sheet_3
       rect:
         serializedVersion: 2
-        x: 149
-        y: 143
-        width: 28
-        height: 31
+        x: 144
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -246,12 +246,12 @@ TextureImporter:
       name: Player-Sheet_4
       rect:
         serializedVersion: 2
-        x: 5
-        y: 79
-        width: 29
-        height: 32
+        x: 0
+        y: 64
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -267,12 +267,12 @@ TextureImporter:
       name: Player-Sheet_5
       rect:
         serializedVersion: 2
-        x: 55
-        y: 79
-        width: 27
-        height: 31
+        x: 48
+        y: 64
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -288,12 +288,12 @@ TextureImporter:
       name: Player-Sheet_6
       rect:
         serializedVersion: 2
-        x: 104
-        y: 79
-        width: 27
-        height: 30
+        x: 96
+        y: 64
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -309,12 +309,12 @@ TextureImporter:
       name: Player-Sheet_7
       rect:
         serializedVersion: 2
-        x: 150
-        y: 79
-        width: 28
-        height: 32
+        x: 144
+        y: 64
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -330,12 +330,12 @@ TextureImporter:
       name: Player-Sheet_8
       rect:
         serializedVersion: 2
-        x: 5
-        y: 13
-        width: 28
-        height: 34
+        x: 0
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -351,12 +351,12 @@ TextureImporter:
       name: Player-Sheet_9
       rect:
         serializedVersion: 2
-        x: 53
-        y: 13
-        width: 29
-        height: 34
+        x: 48
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -372,12 +372,12 @@ TextureImporter:
       name: Player-Sheet_10
       rect:
         serializedVersion: 2
-        x: 100
-        y: 15
-        width: 29
-        height: 31
+        x: 96
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -393,12 +393,12 @@ TextureImporter:
       name: Player-Sheet_11
       rect:
         serializedVersion: 2
-        x: 157
-        y: 15
-        width: 32
-        height: 31
+        x: 144
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -413,14 +413,26 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b7ebe30dccf49f24293ce08128f2c805
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Player-Sheet_0: 4518225611054890064
+      Player-Sheet_1: 1871674578834246284
+      Player-Sheet_10: 2707164253404849536
+      Player-Sheet_11: 760240769326365700
+      Player-Sheet_2: -8148742256322455360
+      Player-Sheet_3: 3489784368332026933
+      Player-Sheet_4: -3944583295012536477
+      Player-Sheet_5: 3090173003755996115
+      Player-Sheet_6: 8403341588387058359
+      Player-Sheet_7: 8222716190985997936
+      Player-Sheet_8: -3764308334532073066
+      Player-Sheet_9: -3961127741491812631
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
