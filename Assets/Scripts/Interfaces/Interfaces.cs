@@ -7,7 +7,12 @@ using UnityEngine;
 /// </summary>
 public interface ISelectable
 {
+    public void OnSelected();
+}
 
+public interface ICommandable
+{
+    public void OnCommand(CommandType inputCommand);
 }
 
 /// <summary>
@@ -15,7 +20,7 @@ public interface ISelectable
 /// </summary>
 public interface IDamageable
 {
-
+    public void TakeDamage();
 }
 
 
