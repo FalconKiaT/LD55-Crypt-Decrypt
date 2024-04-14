@@ -21,7 +21,8 @@ public class PullyPanel : MonoBehaviour
     private void Start()
     {
         initialPosition = transform.position.y;
-        //targetPosition = initialPosition;
+        targetPosition = initialPosition;
+        currentPosition = initialPosition;
     }
 
     private void Update()
@@ -37,11 +38,19 @@ public class PullyPanel : MonoBehaviour
             targetPosition = initialPosition;
         }
 
-        if ()
+        if (transform.position.y > targetPosition)
+        {
+            Debug.Log("Moving Down");
             MoveDown();
+        }
+        else if (transform.position.y < targetPosition) 
+        {
+            Debug.Log("Moving Up");
+            MoveUp();
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.gameObject.name + " has entered");
         if (weightAbove == null)
@@ -53,7 +62,7 @@ public class PullyPanel : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         Debug.Log(collision.gameObject.name + " has exited");
         if (collision.gameObject.GetComponentInChildren<WeightedObject>())
@@ -64,6 +73,11 @@ public class PullyPanel : MonoBehaviour
 
     private void MoveDown()
     {
-        transform.Translate(Vector3.down * Time.deltaTime);
+        transform.Translate(Vector3.down * speed * Time.deltaTime);
+    }
+
+    private void MoveUp()
+    {
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 }
