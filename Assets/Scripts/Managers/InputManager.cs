@@ -6,8 +6,22 @@ using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour, PlayerControls.IPlayerActions
 {
-    public Vector2 movementInput;
+    public static Vector2 movementInput {get; private set;}
     private PlayerControls playerControls;
+
+    #region INPUT EVENTS
+
+    /// <summary>
+    /// Event to be raised when the player presses the jump input
+    /// </summary>
+    public static System.Action OnJumpPressed;
+
+    /// <summary>
+    /// Event to be raised when the player releases the jump input
+    /// </summary>
+    public static System.Action OnJumpReleased;
+
+    #endregion
 
     private void Awake()
     {
@@ -34,7 +48,7 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerActions
     public void OnMove(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
-        Debug.Log(movementInput);
+        //Debug.Log(movementInput);
     }
 
     /// <summary>
@@ -45,7 +59,14 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerActions
     public void OnJump(InputAction.CallbackContext context)
     {
         // TODO: Jumping and possible grounded check
-        
+        if (context.performed)
+        {
+            OnJumpPressed?.Invoke();
+        }
+        else if (context.canceled)
+        {
+            OnJumpReleased?.Invoke();
+        }
     }
 
     /// <summary>
