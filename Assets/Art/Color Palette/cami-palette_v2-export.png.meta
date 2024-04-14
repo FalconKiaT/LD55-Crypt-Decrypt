@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cami-palette_v2-export_0: 510327417311842345
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
