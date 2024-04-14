@@ -131,7 +131,7 @@ public class PlayerController : FKMonoBehaviour
 
         #region JUMP CHECKS
 
-        if (IsJumping && RB.velocity.y < 0)
+        if (IsJumping && RB.velocity.y < 0.01f)
         {
             // Player started to fall
             IsJumping = false;

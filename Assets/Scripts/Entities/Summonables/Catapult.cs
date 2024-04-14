@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Boneman : Entity, ISelectable, ICommandable
+public class Catapult : Entity, ISelectable, ICommandable
 {
-    // Populate Dictionary of valid commands for the boneman
     private void Awake()
     {
-        // Set variables
 
-        // Populate 
     }
-
 
     public void OnSelected()
     {
@@ -23,5 +18,4 @@ public class Boneman : Entity, ISelectable, ICommandable
     {
 
     }
-    
 }
