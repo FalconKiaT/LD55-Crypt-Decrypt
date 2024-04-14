@@ -1,60 +1,69 @@
 using System.Collections;
+using Unity.Android.Types;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PullyPanel : MonoBehaviour
 {
+    public int currentWeight = 0;
 
-    public int weight = 0;
+    public float speed = 0;
 
-    ArrayList gameobjects = new ArrayList();
+    public WeightedObject weightAbove;
+
+    public float initialPosition = 0;
+    public float currentPosition = 0;
+    public float targetPosition = 0;
+
+    private float tileHeight = 1;
+    private bool canMoveDown;
 
     private void Start()
     {
-        gameobjects.Clear();
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<WeightedObject>())
-        {
-            gameobjects.Add(collision.gameObject);
-            
-        }
-    }
-
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<WeightedObject>())
-        {
-            gameobjects.Remove(collision.gameObject);
-            
-        }
-
+        initialPosition = transform.position.y;
+        //targetPosition = initialPosition;
     }
 
     private void Update()
     {
-
-        print(gameobjects.Count);
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (weightAbove != null)
         {
-            print("TEST1");
-            CheckWeight();
+            currentWeight = weightAbove.weight;
+            targetPosition = initialPosition - currentWeight * tileHeight;
         }
-        print(weight);
+        else
+        {
+            currentWeight = 0;
+            targetPosition = initialPosition;
+        }
+
+        if ()
+            MoveDown();
     }
 
-
-    public void CheckWeight()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("checking");
-        foreach (GameObject skele in gameobjects)
+        Debug.Log(collision.gameObject.name + " has entered");
+        if (weightAbove == null)
         {
-            //weight += skele.gameObject.GetComponent<HasWeight>().weight;
+            if (collision.gameObject.GetComponentInChildren<WeightedObject>() != null)
+            {
+                weightAbove = collision.gameObject.GetComponentInChildren<WeightedObject>();
+            }
         }
     }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.name + " has exited");
+        if (collision.gameObject.GetComponentInChildren<WeightedObject>())
+        {
+            weightAbove = null;
+        }
+    }
 
-
+    private void MoveDown()
+    {
+        transform.Translate(Vector3.down * Time.deltaTime);
+    }
 }

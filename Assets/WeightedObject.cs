@@ -10,8 +10,6 @@ public class WeightedObject : MonoBehaviour
 
     public WeightedObject WeightAbove;
 
-    public int touchedpanel = 100;
-
     private void Update()
     {
         if (WeightAbove != null)
@@ -20,19 +18,17 @@ public class WeightedObject : MonoBehaviour
         }
         else
         {
-            weight = 0;
+            weight = 1;
         }
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name + " has collided");
         if (WeightAbove == null)
         {
             if(collision.gameObject.GetComponentInChildren<WeightedObject>() != null)
             {
-               Debug.Log(collision.gameObject.name + " is here");
                WeightAbove = collision.gameObject.GetComponentInChildren<WeightedObject>();
             }
         }
