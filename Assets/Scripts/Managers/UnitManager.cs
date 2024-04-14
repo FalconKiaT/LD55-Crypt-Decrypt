@@ -12,7 +12,8 @@ public enum CommandType
     BoardCatapult,
     UnloadCatapult,
     FireCatapult,
-    Attack
+    Attack,
+    NULL
 }
 
 public class UnitManager : MonoBehaviour
@@ -26,6 +27,9 @@ public class UnitManager : MonoBehaviour
     //[Header("SETTINGS")]
     //public LayerMask validCommandLayers;
 
+    // Accessed by CommandMenuManager
+    public List<CommandType> validCommandsOnSelected { get; private set; }
+
     // Command list for all different types of entities, shouldnt be modified
     private List<CommandType> allCommands = new();
     private List<CommandType> bonemanCommands = new();
@@ -33,9 +37,10 @@ public class UnitManager : MonoBehaviour
     private List<CommandType> catapultCommands = new();
 
     // Local Variables
-    List<CommandType> commonCommands = new();
-    List<CommandType> validCommands = new();
-    List<CommandType> validCommandsOnSelected = new();
+    private Coroutine WaitForCommandSelectRoutine = null;
+    private List<CommandType> commonCommands = new();
+    private List<CommandType> validCommands = new();
+    
 
     private void Awake()
     {
@@ -45,6 +50,9 @@ public class UnitManager : MonoBehaviour
 
         // Subscribe to input events
         InputManager.OnCommandPressed += HandleCommand;
+
+        // Initialize array
+        validCommandsOnSelected = new();
 
         #region ALL COMMANDS
         allCommands.Add(CommandType.Carry);
@@ -82,6 +90,9 @@ public class UnitManager : MonoBehaviour
     {
         // Unsubscribe from input events
         InputManager.OnCommandPressed -= HandleCommand;
+
+        // Handle singleton
+        instance = null;
     }
 
     /// <summary>
@@ -105,6 +116,9 @@ public class UnitManager : MonoBehaviour
             validatedCommand += currCommand.ToString() + " - ";
         }
         Debug.Log(validatedCommand);
+
+        // Wait for player choice
+        HandleCommandSelectRoutine();
     }
 
     /// <summary>
@@ -154,6 +168,7 @@ public class UnitManager : MonoBehaviour
                 switch (entity.entityType)
                 {
                     case EntityTypes.Catapult:
+                        //FIXME: CHECK THAT THE CATAPULT IS NOT BOARDED
                         validCommands.Add(CommandType.BoardCatapult);
                         validCommands.Add(CommandType.MoveTo);
                         break;
@@ -170,23 +185,48 @@ public class UnitManager : MonoBehaviour
             // We didnt hit anything, should be a valid MoveTo Command
             validCommands.Add(CommandType.MoveTo);
         }
-        
     }
 
     /// <summary>
-    /// Crosschecks valid commands and possible commands to get a list of issuable commands
+    /// Crosschecks valid commands and possible commands to get a list of usable commands
     /// </summary>
     private void ValidateCommandsOnSelected()
     {
         validCommandsOnSelected = validCommands.Intersect(commonCommands).ToList();
     }
 
-    /// <summary>
-    /// Function to be called to tell selected units to perform command
-    /// </summary>
-    private void IssueCommand()
+    private void HandleCommandSelectRoutine()
     {
+        if (WaitForCommandSelectRoutine == null)
+        {
+            WaitForCommandSelectRoutine = StartCoroutine(WaitForCommandSelect());
+        }
+    }
 
+    private IEnumerator WaitForCommandSelect()
+    {
+        // Render menu
+        CommandMenuManager.instance.RenderCommandMenu();
+        // Store the place where the mouse was placed
+        Vector2 mousePosInWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // Wait for player to pick
+        while (!CommandMenuManager.instance.hasPlayerPicked)
+        {
+            yield return null;
+        }
+        // HACK: WAIT SOME FRAMES SO THE OPTION UPDATES
+        yield return new WaitForSeconds(1);
+        Debug.Log("STARTED CALLING COMMAND ON UNITS!");
+        // Player picked an option, issue the order to entities
+        foreach (Entity currEntity in selectedUnits)
+        {
+            if (currEntity.TryGetComponent(out ICommandable command))
+            {
+                // FIXME: THE TARGET ENTITY SHOULD BE THE ONE AT THE TARGET
+                command.OnCommand(CommandMenuManager.instance.selectedCommand, mousePosInWorld, null);
+            }
+        }
     }
 
     /// <summary>
@@ -194,6 +234,9 @@ public class UnitManager : MonoBehaviour
     /// </summary>
     public void ClearSelected()
     {
+        // FIXME: STOP SELECTION FROM BEING CLEARED IF CANVAS IS USED
+        return;
+
         // Clear the selected array
         selectedUnits.Clear();
 
@@ -208,6 +251,9 @@ public class UnitManager : MonoBehaviour
     /// </summary>
     public void AddToSelected(Entity input)
     {
+        // Dont add if the selection list is not empty
+        if (selectedUnits.Count > 0) return;
+        // Else, add only if not already on the list
         if (!selectedUnits.Contains(input)) selectedUnits.Add(input);
     }
 }

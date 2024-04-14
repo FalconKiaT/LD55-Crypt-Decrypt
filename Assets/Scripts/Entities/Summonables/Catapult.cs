@@ -14,7 +14,7 @@ public class Catapult : Entity, ISelectable, ICommandable
         UnitManager.instance.AddToSelected(this);
     }
 
-    public void OnCommand(CommandType inputCommand)
+    public void OnCommand(CommandType inputCommand, Vector2 target, Entity targetEntity)
     {
 
     }
