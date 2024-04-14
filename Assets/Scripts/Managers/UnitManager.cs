@@ -23,6 +23,9 @@ public class UnitManager : MonoBehaviour
 
     private List<Entity> activeUnits = new();
 
+    //[Header("SETTINGS")]
+    //public LayerMask validCommandLayers;
+
     // Command list for all different types of entities, shouldnt be modified
     private List<CommandType> allCommands = new();
     private List<CommandType> bonemanCommands = new();
@@ -102,10 +105,6 @@ public class UnitManager : MonoBehaviour
             validatedCommand += currCommand.ToString() + " - ";
         }
         Debug.Log(validatedCommand);
-
-        commonCommands.Clear();
-        validCommands.Clear();
-        validCommandsOnSelected.Clear();
     }
 
     /// <summary>
@@ -145,11 +144,11 @@ public class UnitManager : MonoBehaviour
     {
         // Raycast at cursor to figure out target
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+        Collider2D hit = Physics2D.OverlapPoint(mousePos);
         if (hit)
         {
             // We hit something, figure out if it was an entity
-            if (hit.collider.gameObject.TryGetComponent(out Entity entity))
+            if (hit.gameObject.TryGetComponent(out Entity entity))
             {
                 // It was an entity, validate commands depending on target
                 switch (entity.entityType)
@@ -171,6 +170,7 @@ public class UnitManager : MonoBehaviour
             // We didnt hit anything, should be a valid MoveTo Command
             validCommands.Add(CommandType.MoveTo);
         }
+        
     }
 
     /// <summary>
@@ -192,7 +192,16 @@ public class UnitManager : MonoBehaviour
     /// <summary>
     /// Clear all selected units
     /// </summary>
-    public void ClearSelected() => selectedUnits.Clear();
+    public void ClearSelected()
+    {
+        // Clear the selected array
+        selectedUnits.Clear();
+
+        // Clear command arrays
+        commonCommands.Clear();
+        validCommands.Clear();
+        validCommandsOnSelected.Clear();
+    }
 
     /// <summary>
     /// Add entity to the selection list
