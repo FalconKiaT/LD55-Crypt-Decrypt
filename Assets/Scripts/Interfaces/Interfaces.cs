@@ -12,7 +12,9 @@ public interface ISelectable
 
 public interface ICommandable
 {
-    public void OnCommand(CommandType inputCommand);
+    // The target vector will evaluate to the world point of the mouse
+    // The target entity will be the entity at the mouse position
+    public void OnCommand(CommandType inputCommand, Vector2 target, Entity targetEntity);
 }
 
 /// <summary>
