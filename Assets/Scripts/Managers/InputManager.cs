@@ -26,6 +26,11 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerActions
     public static System.Action<bool> OnSelectToggled;
 
     /// <summary>
+    /// Event to be raised to detect if the player has pressed the select key, used by the command menu
+    /// </summary>
+    public static System.Action OnSelectClicked;
+
+    /// <summary>
     /// Event raised when the player presses the command key
     /// </summary>
     public static System.Action OnCommandPressed;
@@ -92,7 +97,11 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerActions
     public void OnSelect(InputAction.CallbackContext context)
     {
         // TODO: Select Units
-        if (context.performed) OnSelectToggled?.Invoke(true);
+        if (context.performed)
+        {
+            OnSelectToggled?.Invoke(true);
+            OnSelectClicked?.Invoke();
+        }
         else if (context.canceled) OnSelectToggled?.Invoke(false);
     }
 
