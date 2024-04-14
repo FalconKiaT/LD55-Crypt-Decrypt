@@ -20,10 +20,10 @@ AnimatorStateMachine:
     m_Position: {x: 290, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1298071336504322448}
-    m_Position: {x: 400, y: 320, z: 0}
+    m_Position: {x: 360, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4573153773001930453}
-    m_Position: {x: 400, y: 40, z: 0}
+    m_Position: {x: 360, y: 40, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 6805361264631454127}
@@ -455,7 +455,7 @@ BlendTree:
   m_Name: Jumping Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 44aae115f7f34f045a1d26719b7b15f1, type: 2}
+    m_Motion: {fileID: 7400000, guid: c5cae728d36daba48894ca679546b404, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: -1
@@ -463,7 +463,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: c5cae728d36daba48894ca679546b404, type: 2}
+    m_Motion: {fileID: 7400000, guid: 44aae115f7f34f045a1d26719b7b15f1, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1

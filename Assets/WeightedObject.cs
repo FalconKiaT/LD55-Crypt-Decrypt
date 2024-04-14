@@ -5,59 +5,40 @@ using UnityEngine;
 
 public class WeightedObject : MonoBehaviour
 {
-
     public int weight = 1;
     public bool touching;
 
-    private WeightedObject WeightAbove;
+    public WeightedObject WeightAbove;
 
-    public int touchedpanel = 100;
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
-    }
-
-  
-
-    public int getWeight()
-    {
-        return weight;
+        if (WeightAbove != null)
+        {
+            weight = WeightAbove.weight + 1;
+        }
+        else
+        {
+            weight = 1;
+        }
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.name);
-        if(WeightAbove == null)
+        if (WeightAbove == null)
         {
-            if(collision.gameObject.GetComponent<WeightedObject>() != null)
+            if(collision.gameObject.GetComponentInChildren<WeightedObject>() != null)
             {
-
-                Debug.Log("TEST");
-               WeightAbove = collision.gameObject.GetComponent<WeightedObject>();
+               WeightAbove = collision.gameObject.GetComponentInChildren<WeightedObject>();
             }
         }
-        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<WeightedObject>() != null)
+        if (collision.gameObject.GetComponentInChildren<WeightedObject>() != null)
         {
             WeightAbove = null;
-        }
-    }
-    
-    private void Update()
-    {
-        if(WeightAbove != null)
-        {
-            weight = WeightAbove.weight +1;
-        }
-        else
-        {
-            weight=0;
         }
     }
 }

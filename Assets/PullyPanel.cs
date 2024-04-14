@@ -1,60 +1,86 @@
 using System.Collections;
+using Unity.Android.Types;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PullyPanel : MonoBehaviour
 {
+    public PullyPanel linkedPully;
 
-    public int weight = 0;
+    public int currentWeight = 0;
 
-    ArrayList gameobjects = new ArrayList();
+    public float speed = 0;
+
+    public float targetPrecision = 0.1f;
+
+    public int initialPosition = 0;
+    public int targetPosition = 0;
+    private WeightedObject weightAbove;
 
     private void Start()
     {
-        gameobjects.Clear();
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<WeightedObject>())
-        {
-            gameobjects.Add(collision.gameObject);
-            
-        }
-    }
-
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<WeightedObject>())
-        {
-            gameobjects.Remove(collision.gameObject);
-            
-        }
-
+        initialPosition = (int)Mathf.Ceil(transform.position.y);
+        targetPosition = initialPosition;
     }
 
     private void Update()
     {
-
-        print(gameobjects.Count);
-        if(Input.GetKeyDown(KeyCode.Space))
+        Debug.Log(WeightedDifference());
+        if (weightAbove != null)
         {
-            print("TEST1");
-            CheckWeight();
+            currentWeight = weightAbove.weight;
         }
-        print(weight);
+        else
+        {
+            currentWeight = 0;
+        }
+        targetPosition = initialPosition - WeightedDifference();
+
+        if (Mathf.Abs(transform.position.y - (float)targetPosition) <= targetPrecision)
+            return;
+        else if (transform.position.y > (float)targetPosition)
+        {
+            MoveDown();
+        }
+        else if (transform.position.y < (float)targetPosition)
+        {
+            MoveUp();
+        }
     }
 
-
-    public void CheckWeight()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("checking");
-        foreach (GameObject skele in gameobjects)
+        if (weightAbove == null)
         {
-            //weight += skele.gameObject.GetComponent<HasWeight>().weight;
+            if (collision.gameObject.GetComponentInChildren<WeightedObject>() != null)
+            {
+                weightAbove = collision.gameObject.GetComponentInChildren<WeightedObject>();
+            }
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponentInChildren<WeightedObject>())
+        {
+            weightAbove = null;
+        }
+    }
 
+    private void MoveDown()
+    {
+        transform.Translate(Vector3.down * speed * Time.deltaTime);
+    }
 
+    private void MoveUp()
+    {
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
+    }
+
+    private int WeightedDifference()
+    {
+        int weightedDiff = currentWeight - linkedPully.currentWeight;
+        Debug.Log(this.name + " " + weightedDiff);
+        return weightedDiff;
+    }
 }

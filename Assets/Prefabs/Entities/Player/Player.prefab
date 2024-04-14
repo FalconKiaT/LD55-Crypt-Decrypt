@@ -81,9 +81,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 58766227cfb76724d9ed0964df664fdd, type: 2}
-  IsJumping: 0
-  isGrounded: 0
-  LastOnGroundTime: 0
   _groundCheckPoint: {fileID: 1209587550774730476}
   _groundCheckSize: {x: 0.65, y: 0.07}
   _collidableLayers:
@@ -249,7 +246,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5265699249047270352, guid: b5e4400c12576c84c8c17918145086d3, type: 3}
+  m_Sprite: {fileID: 4518225611054890064, guid: a40efd2604f3f2748bdf6ad77eea61ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
