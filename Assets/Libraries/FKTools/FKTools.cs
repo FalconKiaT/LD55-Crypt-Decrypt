@@ -121,6 +121,15 @@ namespace FKTools
             if (!FKToolsConfig.gamePausedEval) FKUpdatePauseAware();
         }
 
+        // Same as above, but with fixed update
+        private void FixedUpdate()
+        {
+            // Call Regular FixedUpdate
+            FKFixedUpdate();
+            // Call Pause Aware Fixed Update only if game is not paused
+            if (!FKToolsConfig.gamePausedEval) FKFixedUpdatePauseAware();
+        }
+
         /// <summary>
         /// <para> The regular function you would call in a Unity Game script, its the same as Update(). Override to use </para>
         /// WARNING: If you have an Update() function in your script, this wont run properly
@@ -132,6 +141,18 @@ namespace FKTools
         /// WARNING: If you have an Update() function in your script, this wont run properly
         /// </summary>
         public virtual void FKUpdatePauseAware() { }
+
+        /// <summary>
+        /// <para> The regular function you would call in a Unity Game script, its the same as FixedUpdate(). Override to use </para>
+        /// WARNING: If you have an FixedUpdate() function in your script, this wont run properly
+        /// </summary>
+        public virtual void FKFixedUpdate() { }
+
+        /// <summary>
+        /// <para> Performs exactly like FixedUpdate(), but it wont execute whenever the game is paused. Override to use </para>
+        /// WARNING: If you have an FixedUpdate() function in your script, this wont run properly
+        /// </summary>
+        public virtual void FKFixedUpdatePauseAware() { }
     }
 
     /// <summary>

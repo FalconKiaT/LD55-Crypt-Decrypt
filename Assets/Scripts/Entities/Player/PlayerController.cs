@@ -11,9 +11,11 @@
  */
 
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using FKTools;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : FKMonoBehaviour
 {
     //Scriptable object which holds all the player's movement parameters. If you don't want to use it
     //just paste in all the parameters, though you will need to manuly change all references in this script
@@ -27,12 +29,14 @@ public class PlayerMovement : MonoBehaviour
     #region Variables
     //Components
     public Rigidbody2D RB { get; private set; }
+    private Animator animator;
 
     //Variables control the various actions the player can perform at any time.
     //These are fields which can are public allowing for other sctipts to read them
     //but can only be privately written to.
     public bool IsFacingRight { get; private set; }
     public bool IsJumping { get; private set; }
+    public bool isGrounded{ get; private set; }
 
     //Timers (also all fields, could be private and a method returning a bool could be used)
     public float LastOnGroundTime { get; private set; }
@@ -41,8 +45,12 @@ public class PlayerMovement : MonoBehaviour
     private bool _isJumpCut;
     private bool _isJumpFalling;
 
+    // Variables
     private Vector2 _moveInput;
     public float LastPressedJumpTime { get; private set; }
+
+    // Animator
+    private int lastDirectionVal = 1;
 
     //Set all of these up in the inspector
     [Header("Checks")]
@@ -59,10 +67,14 @@ public class PlayerMovement : MonoBehaviour
     {
         // Get components
         RB = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
         // Subscribe to input events
         InputManager.OnJumpPressed += OnJumpInput;
         InputManager.OnJumpReleased += OnJumpUpInput;
+
+        // Pause managment
+        FKAnimator.AddToPauseList(animator);
     }
 
     private void Start()
@@ -76,9 +88,11 @@ public class PlayerMovement : MonoBehaviour
         // Unsubscribe from input events
         InputManager.OnJumpPressed -= OnJumpInput;
         InputManager.OnJumpReleased -= OnJumpUpInput;
+        // Remove animator from pause manager
+        FKAnimator.RemoveFromPauseList(animator);
     }
 
-    private void Update()
+    public override void FKUpdatePauseAware()
     {
         #region TIMERS
         LastOnGroundTime -= Time.deltaTime;
@@ -101,8 +115,17 @@ public class PlayerMovement : MonoBehaviour
             // Check if the player is touching the ground or something that they can stand on
             if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _collidableLayers)) //checks if set box overlaps with ground
             {
+                if (LastOnGroundTime < -0.1f)
+                {
+                    isGrounded = true;
+                }
+
                 LastOnGroundTime = Data.coyoteTime; // if so sets the lastGrounded to coyoteTime
             }
+        }
+        else
+        {
+            isGrounded = false;
         }
         #endregion
 
@@ -110,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (IsJumping && RB.velocity.y < 0)
         {
-            // Player landed
+            // Player started to fall
             IsJumping = false;
         }
         
@@ -165,9 +188,54 @@ public class PlayerMovement : MonoBehaviour
             SetGravityScale(Data.gravityScale);
         }
         #endregion
+
+        #region ANIMATOR
+
+        // Set the direction of the animator
+        if (IsFacingRight) lastDirectionVal = 1;
+        else lastDirectionVal = -1;
+        animator.SetFloat("directionX", lastDirectionVal);
+
+        // Check if player is jumping or falling
+        if (IsJumping)
+        {
+            // Jumping
+            animator.SetBool("isJumping", true);
+            animator.SetBool("isFalling", false);
+            animator.SetBool("isRunning", false);
+            return;
+        }
+        else if (!isGrounded)
+        {
+            // Falling
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isFalling", true);
+            animator.SetBool("isRunning", false);
+            return;
+        }
+
+        // Player was grounded, check if the player is at idle or running
+        if (Mathf.Abs(RB.velocity.x) > 0.01f)
+        {
+            // Running
+            animator.SetBool("isRunning", true);
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isFalling", false);
+            return;
+        }
+        else
+        {
+            // Idle
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isFalling", false);
+            return;
+        }
+
+        #endregion
     }
 
-    private void FixedUpdate()
+    public override void FKFixedUpdatePauseAware()
     {
         //Handle Run
         Run(1);
@@ -253,16 +321,6 @@ public class PlayerMovement : MonoBehaviour
 		*/
     }
 
-    // Flip the player if they turn
-    private void Turn()
-    {
-        //stores scale and flips the player along the x axis, 
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
-
-        IsFacingRight = !IsFacingRight;
-    }
     #endregion
 
     #region JUMP METHODS
@@ -287,10 +345,11 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region CHECK METHODS
+    // Change bool if player turns
     public void CheckDirectionToFace(bool isMovingRight)
     {
         if (isMovingRight != IsFacingRight)
-            Turn();
+            IsFacingRight = !IsFacingRight;
     }
 
     private bool CanJump()
