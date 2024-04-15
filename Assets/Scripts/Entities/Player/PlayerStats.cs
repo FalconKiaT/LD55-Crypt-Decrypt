@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerStats : Entity
 {
-    
+    public override void TakeDamage(int damage)
+    {
+        
+    }
 
-
-
-
-
+    public override void Death()
+    {
+        
+    }
 }

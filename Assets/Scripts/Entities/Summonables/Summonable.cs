@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Boneman : Entity, ISelectable, ICommandable
+public abstract class Summonable : Entity
 {
     // Populate Dictionary of valid commands for the boneman
     private void Awake()
@@ -17,38 +17,16 @@ public class Boneman : Entity, ISelectable, ICommandable
     private Coroutine TESTINGROUTINE = null;
 
 
-    public void OnSelected()
+    public override void OnSelected()
     {
         UnitManager.instance.AddToSelected(this);
-    }
-
-    public void OnCommand(CommandType inputCommand, Vector2 target, Entity targetEntity)
-    {
-        switch(inputCommand)
-        {
-            case CommandType.MoveTo:
-                MoveTo(target);
-                break;
-            case CommandType.ReleaseCarry:
-                // TODO: IMPLEMENT
-                break;
-            case CommandType.Carry:
-                // TODO: IMPLEMENT
-                break;
-            case CommandType.Stack:
-                // TODO: IMPLEMENT
-                break;
-            case CommandType.BoardCatapult:
-                // TODO: IMPLEMENT
-                break;
-        }
     }
 
     /// <summary>
     /// Function that will make the skeleton move towards the target
     /// </summary>
     /// <param name="target"></param>
-    private void MoveTo(Vector2 target)
+    protected virtual void MoveTo(Vector2 target)
     {
         if (UnitManager.instance.doDebugLog) Debug.Log("CALLED MOVE TO ON BONEMAN SCRIPT");
         if (TESTINGROUTINE != null)
@@ -69,6 +47,4 @@ public class Boneman : Entity, ISelectable, ICommandable
             yield return null;
         }
     }
-
-    
 }
