@@ -18,6 +18,9 @@ public class Rope : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (first == null || last == null)
+            return;
+
         beginning = new Vector3(first.transform.position.x, (first.transform.position.y + offset));
         end = new Vector3(last.transform.position.x, (last.transform.position.y + offset));
         lineRenderer.SetPosition(0, beginning);

@@ -357,7 +357,7 @@ public class UnitManager : MonoBehaviour
                         validCommands.Add(CommandType.FireCatapult);
                         validCommands.Add(CommandType.UnloadCatapult);
                         break;
-                    case EntityTypes.SmallEnemy:
+                    case EntityTypes.Paladin:
                         validCommands.Add(CommandType.Attack);
                         validCommands.Add(CommandType.MoveTo);
                         break;

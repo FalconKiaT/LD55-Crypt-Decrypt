@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmoredBoneman : Summonable
+public class BasicBoneman : Summonable
 {
     public override void OnCommand(CommandType inputCommand, Vector2 target, Entity targetEntity)
     {
