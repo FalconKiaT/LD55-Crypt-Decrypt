@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2513002885739585291}
   - component: {fileID: 2160342747916210331}
   - component: {fileID: 6879120348100506912}
+  - component: {fileID: 3660839654816812865}
+  - component: {fileID: 6022592054555356841}
   m_Layer: 0
   m_Name: Bone
   m_TagString: Untagged
@@ -133,3 +135,29 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3660839654816812865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5347575738432663612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771d2dfd5069cba41b28c83a86c0597a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6022592054555356841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5347575738432663612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1135607cdfcc3cf40bf4920d75a3a64a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 1.2
+  bobDistance: 0.1
