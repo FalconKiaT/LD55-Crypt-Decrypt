@@ -1320,6 +1320,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1861742695292340326, guid: d62c4d83599db544a80bcf038de8a7bb, type: 3}
   m_PrefabInstance: {fileID: 1327780872}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1086073850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1086073852}
+  - component: {fileID: 1086073851}
+  m_Layer: 0
+  m_Name: Level Music Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1086073851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086073850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -239055478
+      Data2: 1160893251
+      Data3: 1103728518
+      Data4: 1004914050
+    Path: event:/Music/Levels/Level Music
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!4 &1086073852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086073850}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -19.857412, y: -1.2424932, z: -0.056765717}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1086340371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6314585973945619840, guid: 89876b545e8f16044aecdb4e08e630d2, type: 3}
@@ -25743,3 +25806,4 @@ SceneRoots:
   - {fileID: 1018326520}
   - {fileID: 1966381498}
   - {fileID: 1118315088}
+  - {fileID: 1086073852}
