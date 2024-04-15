@@ -16,7 +16,7 @@ public class CatapultManager : MonoBehaviour
 
     [Header("Physics Variables: Constant")]
     public float gravity = 10;
-    public float height;
+    float height;
 
     [Header("Bezier Path Variables")]
     public GameObject pointOne;
@@ -24,12 +24,22 @@ public class CatapultManager : MonoBehaviour
     public GameObject pointThree;
     public GameObject pointFour;
 
+    public GameObject BezierCurve;
+
     [Header("Skeleton Variables")]
     GameObject skeletonObject;
-    public GameObject targetDestination;
+    Vector3 targetDestination;
     public bool toss;
     public bool loadCatapult;
     public bool rotate;
+    // -1 is left, 1 is right
+    public int direction;
+
+    private void Start()
+    {
+        BezierCurve.SetActive(false);
+        skeletonObject = this.gameObject;
+    }
 
     private void Update()
     {
@@ -38,15 +48,18 @@ public class CatapultManager : MonoBehaviour
             if (transform.rotation.y == 1)
             {
                 transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+                direction = -1;
             }
             else
             {
                 transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
+                direction = 1;
             }
             rotate = false;
         }
         if (loadCatapult)
         {
+            BezierCurve.SetActive(true);
             ParabolaMaker();
         }
     }
@@ -54,7 +67,8 @@ public class CatapultManager : MonoBehaviour
     private void ParabolaMaker()
     {
         // determine deltaX and deltaY
-        deltaX = targetDestination.transform.position.x - skeletonObject.transform.position.x;
+        height = ((targetDestination.y - skeletonObject.transform.position.y) / 2 + skeletonObject.transform.position.y);
+        deltaX = targetDestination.x - skeletonObject.transform.position.x;
 
         // figure out VY
         velocityY = Mathf.Sqrt(2 * gravity * height);
@@ -72,6 +86,7 @@ public class CatapultManager : MonoBehaviour
 
         if (toss)
         {
+            BezierCurve.SetActive(false);
             ThrowSkeleton();
             toss = false;
         }
@@ -81,18 +96,18 @@ public class CatapultManager : MonoBehaviour
     {
         // start and end points
         pointOne.transform.position = skeletonObject.transform.position;
-        pointFour.transform.position = targetDestination.transform.position;
+        pointFour.transform.position = targetDestination;    
 
         // in between points
         if (transform.rotation.y == 1 || transform.rotation.y == -1)
         {
-            pointThree.transform.position = new Vector3(skeletonObject.transform.position.x + totalVelocity / 2, skeletonObject.transform.position.y + height / 2, 0);
-            pointTwo.transform.position = new Vector3(targetDestination.transform.position.x - totalVelocity / 2, skeletonObject.transform.position.y + height / 2, 0);
+            pointThree.transform.position = new Vector3(skeletonObject.transform.position.x + totalVelocity / 2, height / 2, 0);
+            pointTwo.transform.position = new Vector3(targetDestination.x - totalVelocity / 2, skeletonObject.transform.position.y + height / 2, 0);
         }
         if (transform.rotation.y == 0)
         {
-            pointThree.transform.position = new Vector3(skeletonObject.transform.position.x - totalVelocity / 2, skeletonObject.transform.position.y + height / 2, 0);
-            pointTwo.transform.position = new Vector3(targetDestination.transform.position.x + totalVelocity / 2, skeletonObject.transform.position.y + height / 2, 0);
+            pointThree.transform.position = new Vector3(skeletonObject.transform.position.x - totalVelocity / 2, height / 2, 0);
+            pointTwo.transform.position = new Vector3(targetDestination.x + totalVelocity / 2, skeletonObject.transform.position.y + height / 2, 0);
         }
         
     }
@@ -105,8 +120,9 @@ public class CatapultManager : MonoBehaviour
         loadCatapult = false;
     }
 
-    public void SetSkeleton(GameObject gameObject)
+    public void SetSkeleton(GameObject gameObject, Vector3 target)
     {
         skeletonObject = gameObject;
+        targetDestination = target;
     }
 }

@@ -402,6 +402,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &447122813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8505864991168572438, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+  m_PrefabInstance: {fileID: 1750099692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &509798407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1315,6 +1320,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6f5ab1251149c499332187fafdf2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1750099692
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2681853384668476686, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199702099075950642, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199702099075950642, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199702099075950642, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199702099075950642, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199702099075950642, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199702099075950642, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199702099075950642, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199702099075950642, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199702099075950642, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199702099075950642, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744136292739715872, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812319007396367574, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829983344114775193, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: placeToMove
+      value: 
+      objectReference: {fileID: 1789011275}
+    - target: {fileID: 6829983344114775193, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: skeletonObject
+      value: 
+      objectReference: {fileID: 447122813}
+    - target: {fileID: 8505864991168572438, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_Name
+      value: Basic Boneman (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3306727171161099139, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
 --- !u!1 &1789011275
 GameObject:
   m_ObjectHideFlags: 0
@@ -2532,7 +2615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3199702099075950642, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.43
+      value: -2.55
       objectReference: {fileID: 0}
     - target: {fileID: 3199702099075950642, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2574,6 +2657,14 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6466238813045052213, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: skeleton1
+      value: 
+      objectReference: {fileID: 1238475315}
+    - target: {fileID: 6466238813045052213, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: skeleton2
+      value: 
+      objectReference: {fileID: 447122813}
     - target: {fileID: 6829983344114775193, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
       propertyPath: placeToMove
       value: 
@@ -2586,7 +2677,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basic Boneman
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3306727171161099139, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2726,5 +2818,6 @@ SceneRoots:
   - {fileID: 2781352689585104167}
   - {fileID: 1789011279}
   - {fileID: 2117723791}
+  - {fileID: 1750099692}
   - {fileID: 1180437237}
   - {fileID: 1367355225}
