@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using TMPro.EditorUtilities;
-using TMPro.Examples;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Summon : MonoBehaviour
@@ -19,10 +16,9 @@ public class Summon : MonoBehaviour
     private UIManager uiManager;
     public float maxDistance = 5f;
     public LayerMask layerMask;
-    public bool placing;
     public Texture2D m1;
     public Texture2D m2;
-
+    private UnitManager unitManager;
     public Vector3 mouse;
 
     public bool canplace = false;
@@ -30,6 +26,7 @@ public class Summon : MonoBehaviour
 
     void Start()
     {
+        unitManager = UnitManager.instance;
         setSkele(objectToInstantiate, 1);
         uiManager = GetComponent<UIManager>();
         player = gameObject.transform.parent.gameObject;
@@ -49,33 +46,50 @@ public class Summon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && placing)
-        {
-          spawn(objectToInstantiate, cost);
-        }
-        else
-        {
-            mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
-
-        txt.text = bones.ToString();
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePosition, minDistanceToCollider, layerMask);
-        if (colliders.Length == 0 && Vector2.Distance(mousePosition, player.transform.position) <= maxDistance)
-        {
-            canplace = true;
-            Cursor.SetCursor(m1, Vector2.zero, CursorMode.Auto);
-        }
-        else
-        {
-            canplace = false;
-            Cursor.SetCursor(m2, Vector2.zero, CursorMode.Auto);
 
+        if (player != null)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                spawn(objectToInstantiate, cost);
+            }
+            else
+            {
+                mouse = mousePosition;
+            }
+
+            txt.text = bones.ToString();
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePosition, minDistanceToCollider, layerMask);
+            if (colliders.Length == 0 && Vector2.Distance(mousePosition, player.transform.position) <= maxDistance)
+            {
+                canplace = true;
+                Cursor.SetCursor(m1, Vector2.zero, CursorMode.Auto);
+            }
+            else
+            {
+                canplace = false;
+                Cursor.SetCursor(m2, Vector2.zero, CursorMode.Auto);
+
+            }
+        }
+
+        if(mousePosition.x < -5.5 && mousePosition.y <4.5)
+        {
+            unitManager.LockSelectCommandPipeline();
+
+        }
+        if (unitManager.isSelectCommandSystemLocked && (mousePosition.x < -5.5 && mousePosition.y < 4.5))
+        {
+            unitManager.UnlockSelectCommandPipeline();
         }
 
 
     }
 
+    public void pausepipeline()
+    {
+    }
     public void setSkele(GameObject temp, int tempcost)
     {
         setSkele(temp);
