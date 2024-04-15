@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4640601774432854766}
+  - component: {fileID: 3602060763655627467}
   - component: {fileID: 1313067814698494576}
   - component: {fileID: 26173888873477812}
-  - component: {fileID: 3602060763655627467}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -34,6 +34,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3602060763655627467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7533947682537679254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e3fc0d3dda3b14d90203615548a7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityType: 0
+  isHolding: 0
+  tookDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  health: 0
+  damage: 5
+  deathDelay: 0
+  canFight: 0
+  deathSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fieldofImpact: 2
+  LayersToHit:
+    serializedVersion: 2
+    m_Bits: 256
+  expl: 0
 --- !u!212 &1313067814698494576
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -115,21 +148,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &3602060763655627467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7533947682537679254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7e3fc0d3dda3b14d90203615548a7d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fieldofImpact: 2
-  damage: 5
-  LayersToHit:
-    serializedVersion: 2
-    m_Bits: 256
-  expl: 0

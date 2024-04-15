@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using FKTools;
 
-public class Bomb : FKMonoBehaviour
+public class Bomb : Entity
 {
-    // Start is called before the first frame update
     public float fieldofImpact;
-    public int damage = 0;
     public LayerMask LayersToHit;
     public bool expl = false;
     private bool isExploding = false;
-    
+    private bool beingHeld = false;
+
 
     // Update is called once per frame
     public override void FKUpdatePauseAware()
@@ -19,18 +18,16 @@ public class Bomb : FKMonoBehaviour
         if(expl && !(isExploding))
         {
             StartCoroutine(FuseRoutinte());
-            
         }
     }
+
     void Explode()
     {
-        
         isExploding = true;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fieldofImpact, LayersToHit);
         
         foreach (Collider2D collider2D in colliders) 
         {
-        
             if (collider2D.tag == "Entity")
             {
                 Entity hitEntity = collider2D.GetComponent<Entity>();
