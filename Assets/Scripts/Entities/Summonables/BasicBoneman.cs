@@ -8,9 +8,18 @@ public class BasicBoneman : Summonable
     [SerializeField] private Transform carryPosition, grabPositionLeft, grabPositionRight;
     [SerializeField] private Entity grabbedEntity;
     [SerializeField] private float droppedRadius = 0.5f;
+    private GameObject dummyTransform;
+    private EnemyAI enemyAI;
 
     private bool hasBomb;
     private bool hasCrate;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        enemyAI = GetComponent<EnemyAI>();
+    }
 
     private void Update()
     {
@@ -23,7 +32,7 @@ public class BasicBoneman : Summonable
         switch (inputCommand)
         {
             case CommandType.MoveTo:
-                entityPathfinder.StartPathfinding(target);
+                enemyAI.target = target;
                 break;
             case CommandType.Release:
                 isHolding = false;
