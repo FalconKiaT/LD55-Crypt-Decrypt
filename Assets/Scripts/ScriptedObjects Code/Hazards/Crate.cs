@@ -25,7 +25,7 @@ public class Crate : MonoBehaviour
         if (collision.gameObject.tag == "Entity")
         {
 
-            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             
         }
         
