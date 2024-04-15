@@ -62,6 +62,9 @@ public class UnitManager : MonoBehaviour
     private bool hasPlayerSelectClicked = false;
     private bool hasPlayerCommandClicked = false;
 
+    // HACK: DEBUGGING
+    public readonly bool doDebugLog = false;
+
     private void Awake()
     {
         // Handle singleton
@@ -149,7 +152,7 @@ public class UnitManager : MonoBehaviour
     {
         // FIXME: If the game was paused, wait to depause?
         ResetClickedListenerBools(); // Reset input checkers
-        Debug.Log("PIPELINE STARTED!");
+        if (doDebugLog) Debug.Log("PIPELINE STARTED!");
 
         // Only enter pipeline if not locked
         while (isSelectCommandSystemLocked)
@@ -171,7 +174,7 @@ public class UnitManager : MonoBehaviour
         if (!hasPlayerSelectClicked)
         {
             // Player didnt click select, restart pipeline
-            Debug.Log("RESTARTED PIPELINE DUE TO PLAYER NOT CLICKING SELECT");
+            if (doDebugLog) Debug.Log("RESTARTED PIPELINE DUE TO PLAYER NOT CLICKING SELECT");
             isAwaitingInput = false;
             ResetClickedListenerBools(); // Reset input checkers
             StartCoroutine(RestartPipeline());
@@ -189,7 +192,7 @@ public class UnitManager : MonoBehaviour
         // Selection was finished, if it resulted in 0, restart the pipeline
         if (selectedUnits.Count <= 0)
         {
-            Debug.Log("RESTARTED PIPELINE DUE TO 0 UNITS SELECTED");
+            if (doDebugLog) Debug.Log("RESTARTED PIPELINE DUE TO 0 UNITS SELECTED");
             StartCoroutine(RestartPipeline());
             yield break; // Not necessary but just in case
         }
@@ -210,7 +213,7 @@ public class UnitManager : MonoBehaviour
         if (!hasPlayerCommandClicked)
         {
             // Player select clicked somewhere else, restart pipeline
-            Debug.Log("RESTARTED PIPELINE DUE TO PLAYER CLICKING SELECT SOMEWHERE ELSE AFTER SELECTING");
+            if (doDebugLog) Debug.Log("RESTARTED PIPELINE DUE TO PLAYER CLICKING SELECT SOMEWHERE ELSE AFTER SELECTING");
             isAwaitingInput = false;
             ResetClickedListenerBools(); // Reset input checkers
             StartCoroutine(RestartPipeline());
@@ -231,7 +234,7 @@ public class UnitManager : MonoBehaviour
         {
             validatedCommand += currCommand.ToString() + " - ";
         }
-        Debug.Log(validatedCommand);
+        if (doDebugLog) Debug.Log(validatedCommand);
 
         #endregion
 
@@ -251,13 +254,13 @@ public class UnitManager : MonoBehaviour
         {
             yield return null;
         }
-        Debug.Log("PASSED MENU MANAGER PICKED");
+        if (doDebugLog) Debug.Log("PASSED MENU MANAGER PICKED");
 
         // The player has made a decision, figure out what it was
         if (commandMenuManager.selectedCommand == CommandType.NULL)
         {
             // Player clicked away of the window, restart pipeline
-            Debug.Log("RESTARTED PIPELINE DUE TO PLAYER CLICKING AWAY OF THE COMMAND WINDOW");
+            if (doDebugLog) Debug.Log("RESTARTED PIPELINE DUE TO PLAYER CLICKING AWAY OF THE COMMAND WINDOW");
             StartCoroutine(RestartPipeline());
             yield break;
         }
@@ -268,12 +271,12 @@ public class UnitManager : MonoBehaviour
         #region EXECUTION 
 
         // Player did pick a command from the command menu, issue the order to the units
-        Debug.Log("EXECUTING COMMAND = " + commandMenuManager.selectedCommand.ToString());
+        if (doDebugLog) Debug.Log("EXECUTING COMMAND = " + commandMenuManager.selectedCommand.ToString());
         foreach (Entity currEntity in selectedUnits)
         {
             if (currEntity.TryGetComponent(out ICommandable command))
             {
-                Debug.Log("CALLED THE COMMAND ON = " + currEntity.gameObject.name);
+                if (doDebugLog) Debug.Log("CALLED THE COMMAND ON = " + currEntity.gameObject.name);
                 command.OnCommand(commandMenuManager.selectedCommand, mouseWorldPosAtCommand, entityAtCommandPos);
             }
         }
@@ -281,7 +284,7 @@ public class UnitManager : MonoBehaviour
         #endregion
 
         // Restart Pipeline upon finishing
-        Debug.Log("RESTARTED PIPELINE DUE TO PROPER EXECUTION");
+        if (doDebugLog) Debug.Log("RESTARTED PIPELINE DUE TO PROPER EXECUTION");
         StartCoroutine(RestartPipeline());
     }
 

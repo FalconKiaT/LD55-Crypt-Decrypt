@@ -50,7 +50,7 @@ public class Boneman : Entity, ISelectable, ICommandable
     /// <param name="target"></param>
     private void MoveTo(Vector2 target)
     {
-        Debug.Log("CALLED MOVE TO ON BONEMAN SCRIPT");
+        if (UnitManager.instance.doDebugLog) Debug.Log("CALLED MOVE TO ON BONEMAN SCRIPT");
         if (TESTINGROUTINE != null)
         {
             StopCoroutine(TESTINGROUTINE);

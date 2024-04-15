@@ -542,7 +542,6 @@ GameObject:
   - component: {fileID: 2012154238120754409}
   - component: {fileID: 8470689279922353790}
   - component: {fileID: 4878640863784426031}
-  - component: {fileID: 3306727171161099139}
   m_Layer: 8
   m_Name: Basic Boneman
   m_TagString: Untagged
@@ -678,18 +677,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.9, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3306727171161099139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8505864991168572438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16a28dd62537db247bcfe30d170b1962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5234792066334691962
 PrefabInstance:
   m_ObjectHideFlags: 0
