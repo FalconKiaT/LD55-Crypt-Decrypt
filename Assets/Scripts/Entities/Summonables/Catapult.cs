@@ -2,20 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Catapult : Entity, ISelectable, ICommandable
+public class Catapult : Summonable
 {
-    private void Awake()
+    public override void OnCommand(CommandType inputCommand, Vector2 target, Entity targetEntity)
     {
-
-    }
-
-    public void OnSelected()
-    {
-        UnitManager.instance.AddToSelected(this);
-    }
-
-    public void OnCommand(CommandType inputCommand, Vector2 target, Entity targetEntity)
-    {
-
+        switch (inputCommand)
+        {
+            case CommandType.MoveTo:
+                MoveTo(target);
+                break;
+            case CommandType.ReleaseCarry:
+                // TODO: IMPLEMENT
+                break;
+            case CommandType.Carry:
+                // TODO: IMPLEMENT
+                break;
+            case CommandType.Stack:
+                // TODO: IMPLEMENT
+                break;
+            case CommandType.BoardCatapult:
+                // TODO: IMPLEMENT
+                break;
+        }
     }
 }
