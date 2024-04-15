@@ -6,23 +6,33 @@ using UnityEngine.UIElements;
 
 public class SkellyPathfinder : MonoBehaviour
 {
+    [Header("Important Locations")]
     public GameObject skeletonObject;
-    public GameObject placeToMove;
     public GameObject gapDetector;
     public GameObject jumpDetector;
+    Vector3 placeToMove;
+
+    [Header("Jumping")]
+    bool canJump;
+    bool jumping;
+
+    [Header("Movement")]
     Animator skeletonAnimator;
     bool canMove = true;
     int collisionCounter = 0;
 
     public bool startMoving;
-
-    bool canJump;
-    bool jumping;
     float speed;
     
 
     // Start is called before the first frame update
     void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         // changes collider position
         transform.position = skeletonObject.transform.position + new Vector3(0, 0, 0);
@@ -30,15 +40,10 @@ public class SkellyPathfinder : MonoBehaviour
 
         // get animator
         skeletonAnimator = skeletonObject.GetComponent<Animator>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
         if (startMoving)
         {
             CheckDirection();
-            AnimateSkeleton();
             MoveToPlace();
         }
         else
@@ -50,7 +55,7 @@ public class SkellyPathfinder : MonoBehaviour
         CollisionChecker();
 
         // figures out delta x
-        if (placeToMove.transform.position.x > skeletonObject.transform.position.x)
+        if (placeToMove.x > skeletonObject.transform.position.x)
         {
             speed = 0.02f;
         }
@@ -72,6 +77,13 @@ public class SkellyPathfinder : MonoBehaviour
     }
 
     public void MoveToPlace() {
+        // determines if the skelly has arrived
+        if (Mathf.Approximately(skeletonObject.transform.position.x, placeToMove.x))
+        {
+            startMoving = false;
+            canMove = false;
+        }
+
         if (canMove)
         {
             // starts the animator
@@ -98,11 +110,6 @@ public class SkellyPathfinder : MonoBehaviour
         }
     }
 
-    public void AnimateSkeleton()
-    {
-        
-    }
-
     private void CollisionChecker()
     {
         if (collisionCounter == 0)
@@ -115,17 +122,20 @@ public class SkellyPathfinder : MonoBehaviour
         }
     }
 
+    public void StartPathfinding(Vector3 targetPosition)
+    {
+        startMoving = true;
+        placeToMove = targetPosition;
+    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision != null)
         {
             collisionCounter++;
-            if (collision.name == "PlaceToMove")
-            {
-                startMoving = false;
-            }
         }
     }
+    
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision != null)
