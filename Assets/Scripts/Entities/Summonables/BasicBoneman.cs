@@ -75,8 +75,8 @@ public class BasicBoneman : Summonable
         if (targetEntity.gameObject.TryGetComponent(out Crate crate))
         {
             grabbedEntity = targetEntity;
-
-            if ((transform.position.x - targetEntity.gameObject.transform.position.x) < 0)
+            grabbedEntity.rb.bodyType = RigidbodyType2D.Kinematic;
+            if ((transform.position.x - targetEntity.gameObject.transform.position.x) > 0)
             {
                 targetEntity.transform.position = grabPositionRight.position;
                 targetEntity.transform.parent = grabPositionRight.transform;
@@ -95,6 +95,7 @@ public class BasicBoneman : Summonable
     {
         if (hasCrate)
         {
+            grabbedEntity.rb.bodyType = RigidbodyType2D.Dynamic;
             grabbedEntity.transform.parent = null;
             hasCrate = false;
         }
