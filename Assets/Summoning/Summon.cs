@@ -19,9 +19,11 @@ public class Summon : MonoBehaviour
     private UIManager uiManager;
     public float maxDistance = 5f;
     public LayerMask layerMask;
-
+    public bool placing;
     public Texture2D m1;
     public Texture2D m2;
+
+    public Vector3 mouse;
 
     public bool canplace = false;
     public ArrayList summons = new ArrayList();
@@ -47,9 +49,13 @@ public class Summon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && placing)
         {
           spawn(objectToInstantiate, cost);
+        }
+        else
+        {
+            mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
         txt.text = bones.ToString();
@@ -96,6 +102,8 @@ public class Summon : MonoBehaviour
             {
                 GameObject temp = Instantiate(objectToInstantiate, mousePosition, Quaternion.identity);
                 summons.Add(temp);
+
+
 
                 if(objectToInstantiate.name == "Basic Boneman" || objectToInstantiate.name == "Basic Boneman(Clone)")
                 {
