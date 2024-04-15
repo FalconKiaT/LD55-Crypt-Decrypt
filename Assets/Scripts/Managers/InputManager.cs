@@ -33,7 +33,7 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerActions
     /// <summary>
     /// Event raised when the player presses the command key
     /// </summary>
-    public static System.Action OnCommandPressed;
+    public static System.Action OnCommandClicked;
 
 
     #endregion
@@ -112,6 +112,6 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerActions
     public void OnCommand(InputAction.CallbackContext context)
     {
         // TODO: Command Units
-        if (context.performed) OnCommandPressed?.Invoke();
+        if (context.performed) OnCommandClicked?.Invoke();
     }
 }
