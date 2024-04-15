@@ -6,14 +6,14 @@ public class NoStickWalls : MonoBehaviour
 {
     PhysicsMaterial2D myMaterial;
     EnemyAI enemyMovement;
-    CircleCollider2D myPoly;
+    BoxCollider2D myPoly;
 
     // Start is called before the first frame update
     void Start()
     {
         myMaterial = new PhysicsMaterial2D();
         enemyMovement = GetComponent<EnemyAI>();
-        myPoly = GetComponent<CircleCollider2D>();
+        myPoly = GetComponent<BoxCollider2D>();
         myPoly.sharedMaterial = myMaterial;
     }
 
