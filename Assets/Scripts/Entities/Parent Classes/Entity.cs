@@ -32,6 +32,8 @@ public abstract class Entity : FKMonoBehaviour, ISelectable, ICommandable, IDama
 
     public bool canFight;
 
+    [SerializeField] private FMODUnity.EventReference deathSFX;
+
     protected Animator animator;
     protected Rigidbody2D rb;
 
@@ -49,7 +51,7 @@ public abstract class Entity : FKMonoBehaviour, ISelectable, ICommandable, IDama
 
     public virtual void Death()
     {
-        StartCoroutine(AttackCo());
+        StartCoroutine(DeathCo());
     }
 
     public void AttackAnim(Vector2 attackDirection)
@@ -58,9 +60,10 @@ public abstract class Entity : FKMonoBehaviour, ISelectable, ICommandable, IDama
         animator.SetTrigger("attackTrigger");
     }
 
-    private IEnumerator AttackCo()
+    private IEnumerator DeathCo()
     {
         yield return FKRoutines.WaitForSecondsPauseAware(deathDelay);
+        SoundManager.instance.PlaySound(deathSFX);
         Destroy(gameObject);
     }
 
