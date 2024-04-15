@@ -23,7 +23,7 @@ public class BasicBoneman : Summonable
         switch (inputCommand)
         {
             case CommandType.MoveTo:
-                MoveTo(target);
+                entityPathfinder.StartPathfinding(target);
                 break;
             case CommandType.Release:
                 isHolding = false;

@@ -15,16 +15,14 @@ public class ExitGate: MonoBehaviour
     [SerializeField] private GameObject Player;
     private float distance;
     private bool triggered = false;
-    private ScenesManager sm;
 
     void Start()
     {
         rend = GetComponent<SpriteRenderer>();
-            sm = ScenesManager.instance;
     }
     private void Update()
     {
-        if(!triggered)
+        if(!triggered && Player != null)
         {
             opengate();
         }
@@ -47,7 +45,6 @@ public class ExitGate: MonoBehaviour
         print("TEST");
         fadeout.GetComponent<FadeOut>().fade();
         yield return new WaitForSeconds(1.3f);
-        sm.LoadNextScene();
     }
         private void opengate()
         {

@@ -492,6 +492,8 @@ public class UnitManager : MonoBehaviour
     public void LockSelectCommandPipeline()
     {
         isSelectCommandSystemLocked = true;
+        StartCoroutine(RestartPipeline());
+
     }
 
     /// <summary>
@@ -501,5 +503,7 @@ public class UnitManager : MonoBehaviour
     public void UnlockSelectCommandPipeline()
     {
         isSelectCommandSystemLocked = false;
+        StartCoroutine(RestartPipeline());
+
     }
 }
