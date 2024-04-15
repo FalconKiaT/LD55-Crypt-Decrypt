@@ -8,13 +8,12 @@ using static UnityEngine.EventSystems.EventTrigger;
 public enum CommandType
 {
     MoveTo,
-    Carry,
-    ReleaseCarry,
+    Grab,
+    Release,
     Stack,
     BoardCatapult,
     UnloadCatapult,
     FireCatapult,
-    Attack,
     NULL
 }
 
@@ -85,22 +84,21 @@ public class UnitManager : MonoBehaviour
         #region ALL COMMANDS
         allCommands = new()
         {
-            CommandType.Carry,
+            CommandType.Grab,
             CommandType.MoveTo,
             CommandType.Stack,
             CommandType.BoardCatapult,
             CommandType.UnloadCatapult,
             CommandType.FireCatapult,
-            CommandType.Attack,
-            CommandType.ReleaseCarry
+            CommandType.Release
         };
         #endregion
 
         #region BONEMAN COMMANDS
         bonemanCommands = new()
         {
-            CommandType.Carry,
-            CommandType.ReleaseCarry,
+            CommandType.Grab,
+            CommandType.Release,
             CommandType.MoveTo,
             CommandType.Stack,
             CommandType.BoardCatapult
@@ -112,7 +110,6 @@ public class UnitManager : MonoBehaviour
         {
             CommandType.MoveTo,
             CommandType.BoardCatapult,
-            CommandType.Attack
         };
         #endregion
 
@@ -349,35 +346,78 @@ public class UnitManager : MonoBehaviour
             // We hit something, figure out if it was an entity
             if (hit.gameObject.TryGetComponent(out Entity entity))
             {
+                // If the entity under command is among the selected, avoid any command
+                if (selectedUnits.Contains(entity)) return;
+                
                 // It was an entity, validate commands depending on target
                 switch (entity.entityType)
                 {
                     case EntityTypes.Catapult:
-                        //FIXME: CHECK IF THE CATAPULT IS BOARDED OR NOT
-                        validCommands.Add(CommandType.FireCatapult);
-                        validCommands.Add(CommandType.UnloadCatapult);
+                        // CHECK IF THE CATAPULT IS BOARDED OR NOT
+                        if (!entity.isHolding)
+                        {
+                            // Catapult is free
+                            validCommands.Add(CommandType.BoardCatapult);
+                        }
                         break;
                     case EntityTypes.Paladin:
-                        validCommands.Add(CommandType.Attack);
                         validCommands.Add(CommandType.MoveTo);
                         break;
                     case EntityTypes.BasicBoneman:
-                        validCommands.Add(CommandType.Stack);
+                        // First contains check avoids self stacking
+						validCommands.Add(CommandType.Stack);
                         break;
+                }
+
+                // Some cases require only one unit selected
+                if (selectedUnits.Count == 1)
+                {
+                    Entity selectedEntity = selectedUnits.ElementAt(0);
+                    // Check what unit was selected and check what relation it has against the entity under the cursor
+                    switch (selectedEntity.entityType)
+                    {
+                        case EntityTypes.BasicBoneman:
+                            // Check if the entity under the cursor is a box and we arent grabing anything
+                            if (!selectedEntity.isHolding && ( entity.entityType == EntityTypes.Crate || entity.entityType == EntityTypes.Bomb) )
+                            {
+                                validCommands.Add(CommandType.Grab);
+                            }
+                            break;
+                    }
                 }
 
                 // Store a reference to the entity
                 entityAtCommandPos = entity;
             }
-            
         }
         else
         {
             // We didnt hit anything
             entityAtCommandPos = null;
             validCommands.Add(CommandType.MoveTo);
-            validCommands.Add(CommandType.FireCatapult);
-            validCommands.Add(CommandType.ReleaseCarry);
+
+            // Now check what unit was selected, handle only singular cases
+            if (selectedUnits.Count != 1) return;
+            // Else, only one unit was selected, figure out its type
+            Entity selectedEntity = selectedUnits.ElementAt(0);
+            switch (selectedEntity.entityType)
+            {
+                case EntityTypes.Catapult:
+                    if (selectedEntity.isHolding)
+                    {
+                        // Add fire and unload command if the catapult is loaded
+                        validCommands.Add(CommandType.FireCatapult);
+                        validCommands.Add(CommandType.UnloadCatapult);
+                    }
+                    break;
+                case EntityTypes.BasicBoneman:
+                    if (selectedEntity.isHolding)
+                    {
+                        // Add the release command if holding 
+                        validCommands.Add(CommandType.Release);
+                    }
+                    break;
+            }
         }
     }
 

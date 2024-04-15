@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BasicBoneman : Summonable
 {
+    
+    
     public override void OnCommand(CommandType inputCommand, Vector2 target, Entity targetEntity)
     {
         switch (inputCommand)
@@ -11,11 +13,13 @@ public class BasicBoneman : Summonable
             case CommandType.MoveTo:
                 MoveTo(target);
                 break;
-            case CommandType.ReleaseCarry:
+            case CommandType.Release:
                 // TODO: IMPLEMENT
+                isHolding = false; // REMOVE THIS AND HANDLE WITH MOVEMENT
                 break;
-            case CommandType.Carry:
+            case CommandType.Grab:
                 // TODO: IMPLEMENT
+                isHolding = true; // REMOVE THIS AND HANDLE WITH MOVEMENT
                 break;
             case CommandType.Stack:
                 // TODO: IMPLEMENT
