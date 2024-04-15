@@ -21,9 +21,10 @@ public class PitFalls : MonoBehaviour
         if (collision.tag == "Player")
         {
             //collision.GetComponent<PlayerT>().TakeDamage(damage);
+            Debug.Log(damage);
         }
         
-        Debug.Log("colided");
+        
             //collision.GetComponent<Health>().TakeDamage(5);
     }
 }
