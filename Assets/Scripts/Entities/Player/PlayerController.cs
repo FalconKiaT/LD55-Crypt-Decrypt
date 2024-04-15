@@ -23,6 +23,10 @@ public class PlayerController : FKMonoBehaviour
     //HOW TO: to add the scriptable object, right-click in the project window -> create -> Player Data
     //Next, drag it into the slot in playerMovement on your player
 
+    [Header("Sound Effects")]
+    [SerializeField] private FMODUnity.EventReference jumpSound;
+    [SerializeField] private FMODUnity.EventReference walkingSound;
+
     [Header("Player Movement Scriptable Obj")]
     public PlayerMoveData Data;
 
@@ -149,6 +153,7 @@ public class PlayerController : FKMonoBehaviour
         // Jump if its input was pressed
         if (CanJump() && LastPressedJumpTime > 0)
         {
+            SoundManager.instance.PlaySound(jumpSound);
             IsJumping = true;
             _isJumpCut = false;
             _isJumpFalling = false;

@@ -2432,6 +2432,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityType: 3
+  health: 0
+  damage: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,6 +2914,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityType: 2
+  health: 0
+  damage: 0
 --- !u!1 &1321364878
 GameObject:
   m_ObjectHideFlags: 0
@@ -3251,6 +3255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityType: 5
+  health: 0
+  damage: 0
 --- !u!4 &1465422263
 Transform:
   m_ObjectHideFlags: 0
@@ -4808,11 +4814,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6466238813045052213, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8505864991168572438, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
       propertyPath: m_Name
       value: Basic Boneman
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8735862066160410216, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3515814268614227299, guid: e96eb7357c21bbf468fcdae68bc6bec8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

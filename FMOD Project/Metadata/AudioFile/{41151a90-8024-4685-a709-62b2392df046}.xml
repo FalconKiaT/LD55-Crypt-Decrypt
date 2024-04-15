@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{41151a90-8024-4685-a709-62b2392df046}">
+		<property name="assetPath">
+			<value>SFX/Enemies/Enemy Walk 3.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>22.0499992</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.966530612244898</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{cb3d5ef1-f1e1-4224-9bc8-8c154ec4cd82}</destination>
+		</relationship>
+	</object>
+</objects>
