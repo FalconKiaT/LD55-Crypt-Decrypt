@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonObject: {fileID: 0}
-  placeToMove: {fileID: 0}
   gapDetector: {fileID: 2294032260147774346}
   jumpDetector: {fileID: 3565356744947803919}
   startMoving: 0

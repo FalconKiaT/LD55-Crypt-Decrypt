@@ -20,7 +20,7 @@ public class PitFalls : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            //collision.GetComponent<PlayerT>().TakeDamage(damage);
+            //collision.GetComponent<Player>().TakeDamage(damage);
             Debug.Log(damage);
         }
         
