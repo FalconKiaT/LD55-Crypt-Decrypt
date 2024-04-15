@@ -11,10 +11,10 @@ public class ArmoredBoneman : Summonable
             case CommandType.MoveTo:
                 MoveTo(target);
                 break;
-            case CommandType.ReleaseCarry:
+            case CommandType.Release:
                 // TODO: IMPLEMENT
                 break;
-            case CommandType.Carry:
+            case CommandType.Grab:
                 // TODO: IMPLEMENT
                 break;
             case CommandType.Stack:

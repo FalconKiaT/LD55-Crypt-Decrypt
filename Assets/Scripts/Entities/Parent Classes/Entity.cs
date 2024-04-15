@@ -20,6 +20,8 @@ public abstract class Entity : FKMonoBehaviour, ISelectable, ICommandable, IDama
 {
     public EntityTypes entityType;
 
+    // The entities that are capable of carrying are determined on the unit manager
+    public bool isHolding; // Catapult Loaded, carrying crate and/or has a bomb
     // Events
     public UnityEvent<int> tookDamage;
 
