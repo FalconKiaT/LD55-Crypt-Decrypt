@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bomb_Spawner : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] private GameObject bomb;
     void Start()
     {
         
@@ -13,6 +14,9 @@ public class Bomb_Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GetComponent<Bomb>().expl)
+        {
+            Instantiate(bomb);
+        }
     }
 }
