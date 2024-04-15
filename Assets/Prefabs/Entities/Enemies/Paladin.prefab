@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityType: 5
+  isHolding: 0
   tookDamage:
     m_PersistentCalls:
       m_Calls:
@@ -288,7 +289,23 @@ MonoBehaviour:
   damage: 2
   deathDelay: 0.35
   canFight: 0
-  patrolPoints: []
+  deathSFX:
+    Guid:
+      Data1: -1755624302
+      Data2: 1191059690
+      Data3: -1886237562
+      Data4: 256944174
+    Path: event:/SFX/Enemies/Death
+  fightingSound:
+    Guid:
+      Data1: -622460269
+      Data2: 1118472445
+      Data3: -1470873691
+      Data4: -2030317190
+    Path: event:/SFX/Summonables/Bones/Fighting
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
   movementSpeed: 1
   pointPrecision: 0.5
   patrolIndex: 0

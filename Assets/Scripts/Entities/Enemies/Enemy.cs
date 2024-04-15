@@ -7,6 +7,8 @@ public class Enemy : Entity
 {
     protected bool isInCombat = false;
 
+    [SerializeField] private FMODUnity.EventReference fightingSound; 
+
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
@@ -43,6 +45,8 @@ public class Enemy : Entity
                 alliedAttackDirection.Normalize();
 
                 TakeDamage(entity.damage);
+
+                SoundManager.instance.PlaySound(fightingSound);
                 entity.AttackAnim(alliedAttackDirection);
             }
         }
