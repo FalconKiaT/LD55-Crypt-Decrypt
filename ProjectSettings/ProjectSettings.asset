@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: TheRmbicCube
   productName: LudumDare55
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 839dcd2b6945186478b2600dd9f1f7c2, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.0141509175, g: 0.7797306, b: 1, a: 1}
   m_ShowUnitySplashScreen: 1
