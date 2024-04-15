@@ -19,13 +19,13 @@ public class StackSkeletons : MonoBehaviour
         if (move)
         {
             // moves skeleton2 to skeleton1
-            skeletonTop.GetComponentInChildren<SkellyPathfinder>().StartPathfinding(skeletonBottom.transform.position);
+            skeletonTop.GetComponentInChildren<EntityPathfinder>().StartPathfinding(skeletonBottom.transform.position);
 
             move = false;
             stack = true;
         }
 
-        if (!skeletonTop.GetComponentInChildren<SkellyPathfinder>().startMoving && stack)
+        if (!skeletonTop.GetComponentInChildren<EntityPathfinder>().startMoving && stack)
         {
             Stack();
         }
@@ -41,7 +41,7 @@ public class StackSkeletons : MonoBehaviour
         skeletonTop.transform.position = skeletonBottom.transform.position + new Vector3(0f, 1f, 0f);
 
         // ensures skeleton 1 can't move
-        skeletonBottom.GetComponentInChildren<SkellyPathfinder>().startMoving = false;
+        skeletonBottom.GetComponentInChildren<EntityPathfinder>().startMoving = false;
     }
 
     // newStack determines if the skeletons will start stacking and newskeleton2 is the skeleton to stack on
