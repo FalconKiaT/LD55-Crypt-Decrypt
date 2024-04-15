@@ -376,7 +376,7 @@ public class UnitManager : MonoBehaviour
                     // Check what unit was selected and check what relation it has against the entity under the cursor
                     switch (selectedEntity.entityType)
                     {
-                        case EntityTypes.Boneman:
+                        case EntityTypes.BasicBoneman:
                             // Check if the entity under the cursor is a box and we arent grabing anything
                             if (!selectedEntity.isHolding && ( entity.entityType == EntityTypes.Crate || entity.entityType == EntityTypes.Bomb) )
                             {
@@ -410,7 +410,7 @@ public class UnitManager : MonoBehaviour
                         validCommands.Add(CommandType.UnloadCatapult);
                     }
                     break;
-                case EntityTypes.Boneman:
+                case EntityTypes.BasicBoneman:
                     if (selectedEntity.isHolding)
                     {
                         // Add the release command if holding 
