@@ -5,6 +5,7 @@ using UnityEngine;
 public class BasicBoneman : Summonable
 {
     [SerializeField] private Transform carryPosition;
+    [SerializeField] private Entity grabbedEntity;
 
     public override void OnCommand(CommandType inputCommand, Vector2 target, Entity targetEntity)
     {
@@ -16,6 +17,7 @@ public class BasicBoneman : Summonable
             case CommandType.Release:
                 
                 isHolding = false;
+                HandleBombRelease();
                 break;
             case CommandType.Grab:
                 isHolding = true;
@@ -32,7 +34,16 @@ public class BasicBoneman : Summonable
 
     private void HandleBombGrab(Entity targetEntity)
     {
+        grabbedEntity = targetEntity;
+        targetEntity.rb.bodyType = RigidbodyType2D.Kinematic;
         targetEntity.transform.position = carryPosition.position;
         targetEntity.transform.parent = carryPosition.transform;
+    }
+
+    private void HandleBombRelease()
+    {
+        grabbedEntity.rb.bodyType = RigidbodyType2D.Dynamic;
+        grabbedEntity.transform.parent = null;
+        grabbedEntity.Death();
     }
 }

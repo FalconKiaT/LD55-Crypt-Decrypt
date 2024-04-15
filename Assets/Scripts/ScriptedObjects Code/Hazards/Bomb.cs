@@ -11,6 +11,10 @@ public class Bomb : Entity
     private bool isExploding = false;
     private bool beingHeld = false;
 
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     // Update is called once per frame
     public override void FKUpdatePauseAware()
@@ -44,6 +48,9 @@ public class Bomb : Entity
         yield return FKRoutines.WaitForSecondsPauseAware(3);
         Explode();
     }
-    
-    
+
+    public override void Death()
+    {
+        StartCoroutine(FuseRoutinte());
+    }
 }
