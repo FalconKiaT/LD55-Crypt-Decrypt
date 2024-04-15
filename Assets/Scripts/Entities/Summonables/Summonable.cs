@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class Summonable : Entity
 {
+    SkellyPathfinder skellyPathfinder;
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
@@ -35,11 +36,32 @@ public abstract class Summonable : Entity
     protected virtual void MoveTo(Vector2 target)
     {
         if (UnitManager.instance.doDebugLog) Debug.Log("CALLED MOVE TO ON BONEMAN SCRIPT");
-        if (TESTINGROUTINE != null)
-        {
-            StopCoroutine(TESTINGROUTINE);
-        }
-        TESTINGROUTINE = StartCoroutine(TESTINGMOVEMENT(target));
+
+        // starts pathfinding
+        skellyPathfinder = GetComponentInChildren<SkellyPathfinder>();
+        skellyPathfinder.StartPathfinding(target);
+
+        //if (TESTINGROUTINE != null)
+        //{
+        //   StopCoroutine(TESTINGROUTINE);
+        //}
+        //TESTINGROUTINE = StartCoroutine(TESTINGMOVEMENT(target));
+    }
+
+    protected virtual void Stack(GameObject target)
+    {
+        // starts stacking
+        StackSkeletons skellyStacker = GetComponent<StackSkeletons>();
+        skellyStacker.SetStack(true, target);
+    }
+
+    protected virtual void BoardCatapult(GameObject target)
+    {
+        // starts boarding
+        SkeletonBoardcatapult skellyBoarder = GetComponent<SkeletonBoardcatapult>();
+        skellyBoarder.SetBoard(true, target);
+
+        // set setboard as false to stop the boarding process
     }
 
     private IEnumerator TESTINGMOVEMENT(Vector2 target)
