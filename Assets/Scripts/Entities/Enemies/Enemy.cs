@@ -7,7 +7,14 @@ public class Enemy : Entity
 {
     protected bool isInCombat = false;
 
-    [SerializeField] private FMODUnity.EventReference fightingSound; 
+    [SerializeField] private FMODUnity.EventReference fightingSound;
+    [SerializeField] private float regenSpeed;
+
+    private void Update()
+    {
+        if (!isInCombat)
+            Regen();
+    }
 
     protected virtual void Start()
     {
@@ -54,6 +61,6 @@ public class Enemy : Entity
 
     public void Regen()
     {
-
+        
     }
 }
