@@ -35,7 +35,7 @@ public class SkeletonBoardcatapult : MonoBehaviour
         if (move)
         {
             // moves skeleton to catapult
-            skeletonTop.GetComponentInChildren<SkellyPathfinder>().StartPathfinding(catapultArmObject.transform.position);
+            skeletonTop.GetComponentInChildren<EntityPathfinder>().StartPathfinding(catapultArmObject.transform.position);
 
             // animations
             catapultArmObject.GetComponent<Animator>().SetBool("Swing", false);
@@ -48,7 +48,7 @@ public class SkeletonBoardcatapult : MonoBehaviour
             board = true;
         }
 
-        if (!skeletonTop.GetComponentInChildren<SkellyPathfinder>().startMoving && board)
+        if (!skeletonTop.GetComponentInChildren<EntityPathfinder>().startMoving && board)
         {
             if (Input.GetMouseButtonDown(1)) { swing = true; }
             if (Input.GetMouseButtonDown(2)) { board = false; }

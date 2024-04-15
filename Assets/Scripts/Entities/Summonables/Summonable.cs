@@ -11,17 +11,8 @@ public abstract class Summonable : Entity
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Populate Dictionary of valid commands for the boneman
-    private void Awake()
-    {
-        // Set variables
-
-        // Populate 
-    }
-
     // Local Variables
     private Coroutine TESTINGROUTINE = null;
-
 
     public override void OnSelected()
     {
