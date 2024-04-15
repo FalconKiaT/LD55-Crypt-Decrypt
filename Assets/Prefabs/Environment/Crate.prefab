@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6744762619740014644}
   - component: {fileID: 2571167743390697610}
   - component: {fileID: 3316388505572994650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Death Box
-  m_TagString: Untagged
+  m_TagString: Objects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,8 +169,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -602292151
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1163504838602118676, guid: 9424217ddd15c9548a4fc8776f5fe6c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -322,7 +322,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4447842537042755934, guid: fdb28797de6ba954b80a2a657fdf2b1c, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447842537042755934, guid: fdb28797de6ba954b80a2a657fdf2b1c, type: 3}
+      propertyPath: m_TagString
+      value: Objects
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
