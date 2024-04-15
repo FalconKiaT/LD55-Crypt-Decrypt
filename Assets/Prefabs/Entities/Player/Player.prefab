@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8386558178552271007}
   - component: {fileID: 5910071472570423340}
   - component: {fileID: 3300787402626045578}
-  - component: {fileID: 3941613761791316515}
+  - component: {fileID: 2944733762313115299}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 58766227cfb76724d9ed0964df664fdd, type: 2}
   _groundCheckPoint: {fileID: 1209587550774730476}
-  _groundCheckSize: {x: 0.65, y: 0.07}
+  _groundCheckSize: {x: 0.5, y: 0.07}
   _collidableLayers:
     serializedVersion: 2
     m_Bits: 320
@@ -135,8 +135,8 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &3941613761791316515
-CircleCollider2D:
+--- !u!70 &2944733762313115299
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -169,8 +169,9 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: 0.32}
+  m_Size: {x: 0.9, y: 1.6376203}
+  m_Direction: 0
 --- !u!1 &6217758386772455262
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,8 +244,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1377358311
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 4518225611054890064, guid: a40efd2604f3f2748bdf6ad77eea61ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
