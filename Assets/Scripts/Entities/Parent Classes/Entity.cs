@@ -34,8 +34,8 @@ public abstract class Entity : FKMonoBehaviour, ISelectable, ICommandable, IDama
 
     [SerializeField] private FMODUnity.EventReference deathSFX;
 
-    public Animator animator;
-    public Rigidbody2D rb;
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public Rigidbody2D rb;
 
     public virtual void TakeDamage(int damage)
     {

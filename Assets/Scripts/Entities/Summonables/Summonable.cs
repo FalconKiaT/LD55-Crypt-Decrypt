@@ -38,14 +38,14 @@ public abstract class Summonable : Entity
         if (UnitManager.instance.doDebugLog) Debug.Log("CALLED MOVE TO ON BONEMAN SCRIPT");
 
         // starts pathfinding
-        skellyPathfinder = GetComponentInChildren<SkellyPathfinder>();
-        skellyPathfinder.StartPathfinding(target);
+        //skellyPathfinder = GetComponentInChildren<SkellyPathfinder>();
+        //skellyPathfinder.StartPathfinding(target);
 
-        //if (TESTINGROUTINE != null)
-        //{
-        //   StopCoroutine(TESTINGROUTINE);
-        //}
-        //TESTINGROUTINE = StartCoroutine(TESTINGMOVEMENT(target));
+        if (TESTINGROUTINE != null)
+        {
+           StopCoroutine(TESTINGROUTINE);
+        }
+        TESTINGROUTINE = StartCoroutine(TESTINGMOVEMENT(target));
     }
 
     protected virtual void Stack(GameObject target)
