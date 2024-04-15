@@ -8,9 +8,18 @@ public class BasicBoneman : Summonable
     [SerializeField] private Transform carryPosition, grabPositionLeft, grabPositionRight;
     [SerializeField] private Entity grabbedEntity;
     [SerializeField] private float droppedRadius = 0.5f;
+    private GameObject dummyTransform;
+    private EnemyAI enemyAI;
 
     private bool hasBomb;
     private bool hasCrate;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        enemyAI = GetComponent<EnemyAI>();
+    }
 
     private void Update()
     {
@@ -23,7 +32,7 @@ public class BasicBoneman : Summonable
         switch (inputCommand)
         {
             case CommandType.MoveTo:
-                entityPathfinder.StartPathfinding(target);
+                enemyAI.target = target;
                 break;
             case CommandType.Release:
                 isHolding = false;
@@ -75,8 +84,8 @@ public class BasicBoneman : Summonable
         if (targetEntity.gameObject.TryGetComponent(out Crate crate))
         {
             grabbedEntity = targetEntity;
-
-            if ((transform.position.x - targetEntity.gameObject.transform.position.x) < 0)
+            grabbedEntity.rb.bodyType = RigidbodyType2D.Kinematic;
+            if ((transform.position.x - targetEntity.gameObject.transform.position.x) > 0)
             {
                 targetEntity.transform.position = grabPositionRight.position;
                 targetEntity.transform.parent = grabPositionRight.transform;
@@ -95,6 +104,7 @@ public class BasicBoneman : Summonable
     {
         if (hasCrate)
         {
+            grabbedEntity.rb.bodyType = RigidbodyType2D.Dynamic;
             grabbedEntity.transform.parent = null;
             hasCrate = false;
         }
