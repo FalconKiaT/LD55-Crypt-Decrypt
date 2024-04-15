@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerStats : Entity
 {
+    [SerializeField] private GameObject deathfade;
     public override void Death()
     {
-        // TODO: Death Stuff
-        Destroy(gameObject);
+        base.Death();
+        print("died");
+        Instantiate(deathfade);
     }
 }
