@@ -312,7 +312,7 @@ public class UnitManager : MonoBehaviour
         {
             switch (entity.entityType)
             {
-                case EntityTypes.Boneman:
+                case EntityTypes.BasicBoneman:
                     commonCommands = commonCommands.Intersect(bonemanCommands).ToList(); 
                     break;
                 case EntityTypes.Catapult:
@@ -363,9 +363,9 @@ public class UnitManager : MonoBehaviour
                     case EntityTypes.Paladin:
                         validCommands.Add(CommandType.MoveTo);
                         break;
-                    case EntityTypes.Boneman:
+                    case EntityTypes.BasicBoneman:
                         // First contains check avoids self stacking
-                        validCommands.Add(CommandType.Stack);
+						validCommands.Add(CommandType.Stack);
                         break;
                 }
 
