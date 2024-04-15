@@ -9,10 +9,12 @@ public class Bomb : Entity
     public LayerMask LayersToHit;
     public bool expl = false;
     private bool isExploding = false;
-    private bool beingHeld = false;
+
+    private BobbingObject bobbingObject;
 
     private void Start()
     {
+        bobbingObject = GetComponentInChildren<BobbingObject>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -23,6 +25,11 @@ public class Bomb : Entity
         {
             StartCoroutine(FuseRoutinte());
         }
+    }
+
+    public void HasBeenGrabbed()
+    {
+        bobbingObject.canBob = false;
     }
 
     void Explode()

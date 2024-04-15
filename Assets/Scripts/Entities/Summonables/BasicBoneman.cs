@@ -34,6 +34,7 @@ public class BasicBoneman : Summonable
 
     private void HandleBombGrab(Entity targetEntity)
     {
+        targetEntity.GetComponent<Bomb>()?.HasBeenGrabbed();
         grabbedEntity = targetEntity;
         targetEntity.rb.bodyType = RigidbodyType2D.Kinematic;
         targetEntity.transform.position = carryPosition.position;
