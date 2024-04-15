@@ -5,11 +5,12 @@ using UnityEngine;
 
 public abstract class Summonable : Entity
 {
-    SkellyPathfinder skellyPathfinder;
+    public EntityPathfinder entityPathfinder;
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        entityPathfinder = GetComponent<EntityPathfinder>();
     }
 
     // Local Variables
@@ -29,8 +30,7 @@ public abstract class Summonable : Entity
         if (UnitManager.instance.doDebugLog) Debug.Log("CALLED MOVE TO ON BONEMAN SCRIPT");
 
         // starts pathfinding
-        skellyPathfinder = GetComponentInChildren<SkellyPathfinder>();
-        skellyPathfinder.StartPathfinding(target);
+        entityPathfinder.StartPathfinding(target);
 
         //if (TESTINGROUTINE != null)
         //{

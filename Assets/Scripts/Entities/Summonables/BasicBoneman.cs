@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class BasicBoneman : Summonable
 {
-    private EntityPathfinder pathFinderComponent;
-
-    private void Awake()
-    {
-        pathFinderComponent = GetComponent<EntityPathfinder>();
-    }
-
     public override void OnCommand(CommandType inputCommand, Vector2 target, Entity targetEntity)
     {
         switch (inputCommand)
         {
             case CommandType.MoveTo:
-                pathFinderComponent.StartPathfinding(target);
+                entityPathfinder.StartPathfinding(target);
                 break;
             case CommandType.Release:
                 // TODO: IMPLEMENT
