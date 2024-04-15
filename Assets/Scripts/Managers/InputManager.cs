@@ -35,6 +35,7 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerActions
     /// </summary>
     public static System.Action OnCommandClicked;
 
+    public static System.Action OnCameraResetClicked;
 
     #endregion
 
@@ -113,5 +114,10 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerActions
     {
         // TODO: Command Units
         if (context.performed) OnCommandClicked?.Invoke();
+    }
+
+    public void OnCameraReset(InputAction.CallbackContext context)
+    {
+        if (context.performed) OnCameraResetClicked?.Invoke();
     }
 }
