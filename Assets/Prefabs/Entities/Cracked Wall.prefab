@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4485340941709557698}
   - component: {fileID: 7173176160068197654}
   m_Layer: 8
-  m_Name: CrackedWall
+  m_Name: Cracked Wall
   m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
