@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Summonable : Entity
 {
     public EntityPathfinder entityPathfinder;
+
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
