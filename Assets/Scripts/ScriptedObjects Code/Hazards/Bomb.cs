@@ -9,8 +9,14 @@ public class Bomb : Entity
     public LayerMask LayersToHit;
     public bool expl = false;
     private bool isExploding = false;
-    private bool beingHeld = false;
 
+    private BobbingObject bobbingObject;
+
+    private void Start()
+    {
+        bobbingObject = GetComponentInChildren<BobbingObject>();
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     // Update is called once per frame
     public override void FKUpdatePauseAware()
@@ -19,6 +25,11 @@ public class Bomb : Entity
         {
             StartCoroutine(FuseRoutinte());
         }
+    }
+
+    public void HasBeenGrabbed()
+    {
+        bobbingObject.canBob = false;
     }
 
     void Explode()
@@ -44,6 +55,9 @@ public class Bomb : Entity
         yield return FKRoutines.WaitForSecondsPauseAware(3);
         Explode();
     }
-    
-    
+
+    public override void Death()
+    {
+        StartCoroutine(FuseRoutinte());
+    }
 }
