@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4328599724053687846}
-  - component: {fileID: 5258403410865908351}
   - component: {fileID: 1212881624669010571}
   - component: {fileID: 6688780392466007331}
   - component: {fileID: 3588937027347392870}
+  - component: {fileID: 6954721841698880598}
   m_Layer: 0
   m_Name: Armored Boneman
   m_TagString: Untagged
@@ -36,19 +36,6 @@ Transform:
   - {fileID: 6311193148660272566}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5258403410865908351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2604905074702988113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8946c568d38bc734c812a884f0e791e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityType: 3
 --- !u!95 &1212881624669010571
 Animator:
   serializedVersion: 7
@@ -135,6 +122,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.9, y: 2}
   m_Direction: 0
+--- !u!114 &6954721841698880598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2604905074702988113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf2dc4fe20e38f443ad4feb9276fcad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityType: 3
+  health: 2
+  damage: 2
 --- !u!1 &6543195112441151214
 GameObject:
   m_ObjectHideFlags: 0

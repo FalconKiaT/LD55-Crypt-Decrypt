@@ -35,10 +35,12 @@ public class Crate : MonoBehaviour
     
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Entity")
+        if (collision.gameObject.tag == "Entity")
         {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
+        else if (collision.gameObject.tag == "Player")
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     
 }
