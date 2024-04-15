@@ -11,13 +11,12 @@ public class CatapultManager : MonoBehaviour
     float velocityY;
     float totalVelocity;
     float theta;
-    float height;
     float time;
     float deltaX;
 
     [Header("Physics Variables: Constant")]
     public float gravity = 10;
-    public float heightOfParabola;
+    public float height;
 
     [Header("Bezier Path Variables")]
     public GameObject pointOne;
@@ -26,35 +25,47 @@ public class CatapultManager : MonoBehaviour
     public GameObject pointFour;
 
     [Header("Skeleton Variables")]
-    public GameObject skeletonObject;
+    GameObject skeletonObject;
     public GameObject targetDestination;
     public bool toss;
     public bool loadCatapult;
+    public bool rotate;
 
     private void Update()
     {
+        if (rotate)
+        {
+            if (transform.rotation.y == 1)
+            {
+                transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+            }
+            else
+            {
+                transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
+            }
+            rotate = false;
+        }
         if (loadCatapult)
         {
             ParabolaMaker();
         }
     }
 
-    public void ParabolaMaker()
+    private void ParabolaMaker()
     {
         // determine deltaX and deltaY
-        deltaX = - targetDestination.transform.position.x + skeletonObject.transform.position.x;
-        height = - targetDestination.transform.position.y + skeletonObject.transform.position.y + heightOfParabola;
+        deltaX = targetDestination.transform.position.x - skeletonObject.transform.position.x;
 
         // figure out VY
         velocityY = Mathf.Sqrt(2 * gravity * height);
         time = velocityY / gravity;
 
         // figure out VX
-        velocityX = deltaX / time;
+        velocityX = deltaX / (2 * time);
 
         // figure out VTotal
         theta = Mathf.Atan2(velocityY, velocityX);
-        totalVelocity = Mathf.Acos(theta) * velocityX;
+        totalVelocity = velocityX / Mathf.Cos(theta); 
 
         // Draws the points based on the parabola
         LineMaker();
@@ -66,21 +77,36 @@ public class CatapultManager : MonoBehaviour
         }
     }
 
-    public void LineMaker()
+    private void LineMaker()
     {
         // start and end points
         pointOne.transform.position = skeletonObject.transform.position;
         pointFour.transform.position = targetDestination.transform.position;
 
         // in between points
-        pointTwo.transform.position = new Vector3(deltaX / 4, height / 2, 0); 
-        pointThree.transform.position = new Vector3(deltaX * 3 / 4, height / 2, 0);
+        if (transform.rotation.y == 1 || transform.rotation.y == -1)
+        {
+            pointThree.transform.position = new Vector3(skeletonObject.transform.position.x + totalVelocity / 2, skeletonObject.transform.position.y + height / 2, 0);
+            pointTwo.transform.position = new Vector3(targetDestination.transform.position.x - totalVelocity / 2, skeletonObject.transform.position.y + height / 2, 0);
+        }
+        if (transform.rotation.y == 0)
+        {
+            pointThree.transform.position = new Vector3(skeletonObject.transform.position.x - totalVelocity / 2, skeletonObject.transform.position.y + height / 2, 0);
+            pointTwo.transform.position = new Vector3(targetDestination.transform.position.x + totalVelocity / 2, skeletonObject.transform.position.y + height / 2, 0);
+        }
+        
     }
 
-    public void ThrowSkeleton()
+    private void ThrowSkeleton()
     {
         Rigidbody2D skeletonPhysics = skeletonObject.GetComponent<Rigidbody2D>();
         skeletonPhysics.velocityX = velocityX;
         skeletonPhysics.velocityY = velocityY;
+        loadCatapult = false;
+    }
+
+    public void SetSkeleton(GameObject gameObject)
+    {
+        skeletonObject = gameObject;
     }
 }
