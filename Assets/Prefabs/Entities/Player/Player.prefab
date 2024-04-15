@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8141458515207758663}
   - component: {fileID: 8386558178552271007}
+  - component: {fileID: 2070928099472900279}
   - component: {fileID: 5910071472570423340}
   - component: {fileID: 3300787402626045578}
   - component: {fileID: 2944733762313115299}
@@ -61,7 +62,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.26, y: -2.61, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1209587550774730476}
@@ -100,6 +101,34 @@ MonoBehaviour:
   _collidableLayers:
     serializedVersion: 2
     m_Bits: 320
+--- !u!114 &2070928099472900279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163747091243932267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c644d7a91496f9b4797893dd6f5c21ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityType: 6
+  isHolding: 0
+  tookDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  health: 1
+  damage: 0
+  deathDelay: 0
+  canFight: 0
+  deathSFX:
+    Guid:
+      Data1: -1686374445
+      Data2: 1086010661
+      Data3: 1144444811
+      Data4: -253348193
+    Path: event:/SFX/Player/Dying
 --- !u!95 &5910071472570423340
 Animator:
   serializedVersion: 7
