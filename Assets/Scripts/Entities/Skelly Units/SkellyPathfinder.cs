@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -15,6 +16,7 @@ public class SkellyPathfinder : MonoBehaviour
     [Header("Jumping")]
     bool canJump;
     bool jumping;
+    float jumpHeight = 1.2f;
 
     [Header("Movement")]
     Animator skeletonAnimator;
@@ -23,13 +25,6 @@ public class SkellyPathfinder : MonoBehaviour
 
     public bool startMoving;
     float speed;
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -78,10 +73,25 @@ public class SkellyPathfinder : MonoBehaviour
 
     public void MoveToPlace() {
         // determines if the skelly has arrived
-        if (Mathf.Approximately(skeletonObject.transform.position.x, placeToMove.x))
+        float range = 0.1f;
+
+        // if the skelly is approaching from the left
+        if (speed > 0)
         {
-            startMoving = false;
-            canMove = false;
+            if (skeletonObject.transform.position.x > placeToMove.x - range)
+            {
+                startMoving = false;
+                canMove = false;
+            }
+        }
+        // if the skelly is approaching from the right 
+        else
+        {
+            if (skeletonObject.transform.position.x < placeToMove.x + range)
+            {
+                startMoving = false;
+                canMove = false;
+            }
         }
 
         if (canMove)
@@ -93,7 +103,7 @@ public class SkellyPathfinder : MonoBehaviour
             // determines what the skeleton is doing
             if (canJump && !jumping)
             {
-                skeletonObject.transform.Translate(new Vector3(speed*4f, 1.2f, 0)); 
+                skeletonObject.transform.Translate(new Vector3(speed*4f, jumpHeight, 0)); 
                 jumping = true;
                 canJump = false;
             }
@@ -125,11 +135,13 @@ public class SkellyPathfinder : MonoBehaviour
     public void StartPathfinding(Vector3 targetPosition)
     {
         startMoving = true;
+        canMove = true;
         placeToMove = targetPosition;
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // collision counter is number of objects colliding with the current object
         if (collision != null)
         {
             collisionCounter++;
