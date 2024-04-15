@@ -67,6 +67,9 @@ public class PlayerController : FKMonoBehaviour
     [SerializeField] private LayerMask _collidableLayers;
     #endregion
 
+    // Sound variables
+    private bool isWalkingPlaying = false;
+
     private void Awake()
     {
         // Get components
@@ -194,10 +197,16 @@ public class PlayerController : FKMonoBehaviour
         }
         #endregion
 
+        // Play walking sound
+        if (isGrounded && (RB.velocity.x > 0.01f || RB.velocity.x < -0.01f) )
+        {
+            SoundManager.instance.PlaySound(walkingSound);
+        }
+
         #region ANIMATOR
 
-        // Set the direction of the animator
-        if (IsFacingRight) lastDirectionVal = 1;
+            // Set the direction of the animator
+            if (IsFacingRight) lastDirectionVal = 1;
         else lastDirectionVal = -1;
         animator.SetFloat("directionX", lastDirectionVal);
 
@@ -238,6 +247,8 @@ public class PlayerController : FKMonoBehaviour
         }
 
         #endregion
+
+        
     }
 
     public override void FKFixedUpdatePauseAware()

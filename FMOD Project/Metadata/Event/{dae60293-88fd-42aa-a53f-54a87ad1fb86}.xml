@@ -39,7 +39,7 @@
 	</object>
 	<object class="MasterTrack" id="{392502f7-f74e-42e9-9378-f81446ae074b}">
 		<relationship name="modules">
-			<destination>{8a3fa448-a446-483a-a4d9-a0ab786b3398}</destination>
+			<destination>{99b0a1d4-8351-4a05-90e8-751c927bf26a}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{6c390281-44e4-4114-92ca-724e0ad7322a}</destination>
@@ -60,10 +60,13 @@
 	<object class="MarkerTrack" id="{2eb99954-40da-4875-b508-503fbbd111c9}" />
 	<object class="Timeline" id="{61c2d11a-4c20-41df-8808-ec5eed1a5fa0}">
 		<relationship name="modules">
-			<destination>{8a3fa448-a446-483a-a4d9-a0ab786b3398}</destination>
+			<destination>{99b0a1d4-8351-4a05-90e8-751c927bf26a}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{6c390281-44e4-4114-92ca-724e0ad7322a}">
+		<property name="volume">
+			<value>-7</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{aa504767-6c41-4f97-a63a-a204b0b8b484}</destination>
 		</relationship>
@@ -74,16 +77,16 @@
 			<destination>{9e852a5f-af9e-47a1-8658-f6a809af0b87}</destination>
 		</relationship>
 	</object>
-	<object class="MultiSound" id="{8a3fa448-a446-483a-a4d9-a0ab786b3398}">
+	<object class="MultiSound" id="{99b0a1d4-8351-4a05-90e8-751c927bf26a}">
 		<property name="length">
-			<value>0.28000000000000003</value>
+			<value>0.27000000000000002</value>
 		</property>
 		<relationship name="sounds">
-			<destination>{91485e90-e4a6-45f2-bfb5-0709ab6c345b}</destination>
-			<destination>{69a0d31a-9aa2-4d0a-ab01-0f2eccea9f54}</destination>
+			<destination>{4f729a5a-1e3b-4276-8480-9f6519481741}</destination>
+			<destination>{00ea8ac4-eda8-48d8-99c5-454a653d24c5}</destination>
 		</relationship>
 		<relationship name="playPercentages">
-			<destination>{f29c2ab2-e8d3-49fc-b2b7-3603a90ca205}</destination>
+			<destination>{dce7560f-3185-4551-9125-38046508d4e6}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{b04b94b6-913f-46d6-9c95-b958f7b51402}">
@@ -98,24 +101,49 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{880c02af-a923-40fb-b70e-6387bd0f7a9a}" />
-	<object class="SingleSound" id="{91485e90-e4a6-45f2-bfb5-0709ab6c345b}">
-		<relationship name="audioFile">
-			<destination>{61f3139d-4f8f-43ba-b8b1-292b4b8a8aad}</destination>
+	<object class="SingleSound" id="{4f729a5a-1e3b-4276-8480-9f6519481741}">
+		<relationship name="modulators">
+			<destination>{791448f9-8ad1-44da-b294-0bc302122504}</destination>
 		</relationship>
-	</object>
-	<object class="SingleSound" id="{69a0d31a-9aa2-4d0a-ab01-0f2eccea9f54}">
 		<relationship name="audioFile">
 			<destination>{47b5f034-540c-4527-85b1-b4bcb6766b87}</destination>
 		</relationship>
 	</object>
-	<object class="PlayPercentage" id="{f29c2ab2-e8d3-49fc-b2b7-3603a90ca205}">
+	<object class="SingleSound" id="{00ea8ac4-eda8-48d8-99c5-454a653d24c5}">
+		<property name="volume">
+			<value>-2</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{62f6b1dc-17d7-493b-840d-d7dc5416006c}</destination>
+		</relationship>
+		<relationship name="audioFile">
+			<destination>{1d9b2ce4-e90f-49cb-a45e-62660298f087}</destination>
+		</relationship>
+	</object>
+	<object class="PlayPercentage" id="{dce7560f-3185-4551-9125-38046508d4e6}">
 		<property name="percentage">
-			<value>80</value>
+			<value>20</value>
 		</property>
 		<relationship name="sound">
-			<destination>{69a0d31a-9aa2-4d0a-ab01-0f2eccea9f54}</destination>
+			<destination>{00ea8ac4-eda8-48d8-99c5-454a653d24c5}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{08a48d61-2072-41ec-9618-e850fd7175ac}" />
 	<object class="MixerBusFader" id="{dc4efda9-ff52-4ede-9259-d51a1716daa5}" />
+	<object class="RandomizerModulator" id="{791448f9-8ad1-44da-b294-0bc302122504}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>6.5</value>
+		</property>
+	</object>
+	<object class="RandomizerModulator" id="{62f6b1dc-17d7-493b-840d-d7dc5416006c}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>2</value>
+		</property>
+	</object>
 </objects>
