@@ -67,9 +67,6 @@ public class PlayerController : FKMonoBehaviour
     [SerializeField] private LayerMask _collidableLayers;
     #endregion
 
-    // Sound variables
-    private bool isWalkingPlaying = false;
-
     private void Awake()
     {
         // Get components
