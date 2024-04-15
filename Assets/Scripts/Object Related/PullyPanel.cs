@@ -24,7 +24,6 @@ public class PullyPanel : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(WeightedDifference());
         if (weightAbove != null)
         {
             currentWeight = weightAbove.weight;
@@ -79,7 +78,6 @@ public class PullyPanel : MonoBehaviour
     private int WeightedDifference()
     {
         int weightedDiff = currentWeight - linkedPully.currentWeight;
-        Debug.Log(this.name + " " + weightedDiff);
         return weightedDiff;
     }
 }
