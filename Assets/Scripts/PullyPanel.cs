@@ -1,58 +1,54 @@
 using System.Collections;
-//using Unity.Android.Types;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PullyPanel : MonoBehaviour
 {
+    public PullyPanel linkedPully;
+
     public int currentWeight = 0;
 
     public float speed = 0;
 
-    public WeightedObject weightAbove;
+    public float targetPrecision = 0.1f;
 
-    public float initialPosition = 0;
-    public float currentPosition = 0;
-    public float targetPosition = 0;
-
-    private float tileHeight = 1;
-    private bool canMoveDown;
+    public int initialPosition = 0;
+    public int targetPosition = 0;
+    private WeightedObject weightAbove;
 
     private void Start()
     {
-        initialPosition = transform.position.y;
+        initialPosition = (int)Mathf.Ceil(transform.position.y);
         targetPosition = initialPosition;
-        currentPosition = initialPosition;
     }
 
     private void Update()
     {
+        Debug.Log(WeightedDifference());
         if (weightAbove != null)
         {
             currentWeight = weightAbove.weight;
-            targetPosition = initialPosition - currentWeight * tileHeight;
         }
         else
         {
             currentWeight = 0;
-            targetPosition = initialPosition;
         }
+        targetPosition = initialPosition - WeightedDifference();
 
-        if (transform.position.y > targetPosition)
+        if (Mathf.Abs(transform.position.y - (float)targetPosition) <= targetPrecision)
+            return;
+        else if (transform.position.y > (float)targetPosition)
         {
-            Debug.Log("Moving Down");
             MoveDown();
         }
-        else if (transform.position.y < targetPosition) 
+        else if (transform.position.y < (float)targetPosition)
         {
-            Debug.Log("Moving Up");
             MoveUp();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name + " has entered");
         if (weightAbove == null)
         {
             if (collision.gameObject.GetComponentInChildren<WeightedObject>() != null)
@@ -64,7 +60,6 @@ public class PullyPanel : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name + " has exited");
         if (collision.gameObject.GetComponentInChildren<WeightedObject>())
         {
             weightAbove = null;
@@ -79,5 +74,12 @@ public class PullyPanel : MonoBehaviour
     private void MoveUp()
     {
         transform.Translate(Vector3.up * speed * Time.deltaTime);
+    }
+
+    private int WeightedDifference()
+    {
+        int weightedDiff = currentWeight - linkedPully.currentWeight;
+        Debug.Log(this.name + " " + weightedDiff);
+        return weightedDiff;
     }
 }
