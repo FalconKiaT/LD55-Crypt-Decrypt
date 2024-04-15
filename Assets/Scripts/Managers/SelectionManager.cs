@@ -11,12 +11,16 @@ public class SelectionManager : FKMonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private RectTransform selectionBox;
-    
+
     // SelectionMagnitude: Controls how far away the mouse needs to get for the selection box to render
     [SerializeField] private float dragSelectDistance;
     [SerializeField] private LayerMask selectableLayers;
 
+    // Interface bools with Unit Manager
+    [HideInInspector] public bool selectionFinished = false;
+
     // Local variables
+    private bool isSelectHeldDown;
     private Vector2 initialMousePos;
     private RectTransform managerRect;
     private Coroutine selectTrackingRoutine = null;
@@ -27,57 +31,31 @@ public class SelectionManager : FKMonoBehaviour
         // Get components
         managerRect = GetComponent<RectTransform>();
 
-        // Subscribe to input events
-        InputManager.OnSelectToggled += HandleTrackingRoutine;
-
         // Make sure Selection box is not visible
         selectionBox.gameObject.SetActive(false);
+
+        // Subscribe to input
+        InputManager.OnSelectToggled += SetSelectHeldDownBool;
     }
 
     private void OnDestroy()
     {
-        // Unsubscribe from input events
-        InputManager.OnSelectToggled -= HandleTrackingRoutine;
-
         // Make sure Selection box is not visible
         selectionBox.gameObject.SetActive(false);
+
+        // Unsubscribe to input
+        InputManager.OnSelectToggled -= SetSelectHeldDownBool;
     }
 
     // Handle the coroutine that tracks the selection of the player
-    private void HandleTrackingRoutine(bool isPressed)
+    public void StartTrackingRoutine()
     {
-        if (isPressed)
+        // Player has pressed the key, handle routine
+        if (selectTrackingRoutine == null)
         {
-            // Player has pressed the key, handle routine
-            if (selectTrackingRoutine == null)
-            {
-                initialMousePos = Input.mousePosition;
-                selectTrackingRoutine = StartCoroutine(TrackSelection());
-            }
-            return;
-        }
-        // Else, the player has released the select button
-        StopCoroutine(selectTrackingRoutine);
-        // Ended selection, remove box
-        selectionBox.gameObject.SetActive(false);
-        selectTrackingRoutine = null;
-        // Clear the selection array
-        UnitManager.instance.ClearSelected();
-        // Get all under selection
-        Vector2 initialMousePosWorld = Camera.main.ScreenToWorldPoint(initialMousePos);
-        Vector2 finalMousePosWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        selectionCast = Physics2D.OverlapAreaAll(initialMousePosWorld, finalMousePosWorld, selectableLayers, -0.1f, 0.1f);
-        // If the cast resulted in 0, then dont add any
-        if (selectionCast.Length <= 0) return;
-        // Else, add all possible selections to the array
-        foreach (Collider2D currCollider in selectionCast)
-        {
-            // If the entity implements selectable, call it
-            if (currCollider.TryGetComponent(out ISelectable selectable))
-            {
-                selectable.OnSelected();
-                Debug.Log("ADDED = " + currCollider.name);
-            }
+            selectionFinished = false;
+            initialMousePos = Input.mousePosition;
+            selectTrackingRoutine = StartCoroutine(TrackSelection());
         }
     }
 
@@ -85,9 +63,12 @@ public class SelectionManager : FKMonoBehaviour
     private IEnumerator TrackSelection()
     {
         bool dragDistancePassed = false;
+        // Event system will turn this bool into false if the players lets go of the select
+        // It starts as true because we already check for the click on the unit manager
+        isSelectHeldDown = true;
 
-        // Continuously check for distance
-        while (true)
+        // Player started clicking select, continuously check for distance to start rendering box
+        while (isSelectHeldDown)
         {
             // Check for the distance
             if (!dragDistancePassed && (initialMousePos - (Vector2)Input.mousePosition).magnitude > dragSelectDistance)
@@ -109,6 +90,38 @@ public class SelectionManager : FKMonoBehaviour
             selectionBox.gameObject.SetActive(true);
             yield return null;
         }
+        // Player has released the select button
+        selectionBox.gameObject.SetActive(false);
+        // Get all under selection
+        Vector2 initialMousePosWorld = Camera.main.ScreenToWorldPoint(initialMousePos);
+        Vector2 finalMousePosWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        selectionCast = Physics2D.OverlapAreaAll(initialMousePosWorld, finalMousePosWorld, selectableLayers, -0.1f, 0.1f);
+        if (selectionCast.Length <= 0)
+        {
+            // If the cast resulted in 0, then dont add any
+            StartCoroutine(ExitSelectionRoutine());
+            yield break;
+        }
+        // Else, add all possible selections to the array
+        foreach (Collider2D currCollider in selectionCast)
+        {
+            // If the entity implements selectable, call it
+            if (currCollider.TryGetComponent(out ISelectable selectable))
+            {
+                selectable.OnSelected();
+                if (UnitManager.instance.doDebugLog) Debug.Log("ADDED = " + currCollider.name);
+            }
+        }
+        // Finished
+        StartCoroutine(ExitSelectionRoutine());
+    }
+
+    private IEnumerator ExitSelectionRoutine()
+    {
+        StopCoroutine(selectTrackingRoutine);
+        selectTrackingRoutine = null;
+        selectionFinished = true;
+        yield break;
     }
 
     // Handles the selection box object
@@ -121,6 +134,19 @@ public class SelectionManager : FKMonoBehaviour
         selectionBox.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
 
         // Set position
-        selectionBox.anchoredPosition = new Vector2(initialMousePos.x, initialMousePos.y) + new Vector2(width/2,height/2);
+        selectionBox.anchoredPosition = new Vector2(initialMousePos.x, initialMousePos.y) + new Vector2(width / 2, height / 2);
+    }
+
+    /// <summary>
+    /// Function managed by input
+    /// </summary>
+    private void SetSelectHeldDownBool(bool isPressed)
+    {
+        // Only listen to when the player releases the click
+        if (isSelectHeldDown && !isPressed)
+        {
+            // Player released the select key
+            isSelectHeldDown = false;
+        }
     }
 }
