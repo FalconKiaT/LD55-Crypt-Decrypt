@@ -22,12 +22,15 @@ public class UnitManager : MonoBehaviour
 {
     // Singleton
     public static UnitManager instance;
+
+    // Lock bool. CAREFUL, WILL STOP THE SYSTEM
+    public bool isSelectCommandSystemLocked { get; private set; }
     
     private List<Entity> selectedUnits = new();
 
     private List<Entity> activeUnits = new();
 
-    //[Header("SETTINGS")]
+    [Header("SETTINGS")]
     public LayerMask validCommandLayers;
 
     // Accessed by CommandMenuManager
@@ -147,6 +150,12 @@ public class UnitManager : MonoBehaviour
         // FIXME: If the game was paused, wait to depause?
         ResetClickedListenerBools(); // Reset input checkers
         Debug.Log("PIPELINE STARTED!");
+
+        // Only enter pipeline if not locked
+        while (isSelectCommandSystemLocked)
+        {
+            yield return null;
+        }
 
         // FIXME: SHOULD IGNORE THE AREA OF THE UI SELECTION!
 
@@ -431,5 +440,23 @@ public class UnitManager : MonoBehaviour
     {
         ValidateCommands();
         ValidateCommandsOnSelected();
+    }
+
+    /// <summary>
+    /// <para> Function to lock the player from using the selection and command system. </para>
+    /// USE CAREFULLY
+    /// </summary>
+    public void LockSelectCommandPipeline()
+    {
+        isSelectCommandSystemLocked = true;
+    }
+
+    /// <summary>
+    /// <para> Function to unlock the player from using the selection and command system. </para>
+    /// USE CAREFULLY
+    /// </summary>
+    public void UnlockSelectCommandPipeline()
+    {
+        isSelectCommandSystemLocked = false;
     }
 }
