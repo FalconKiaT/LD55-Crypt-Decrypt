@@ -52,6 +52,15 @@ public class Summon : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                if (mousePosition.x < -5.5 && mousePosition.y < 4.5)
+                {
+                    unitManager.LockSelectCommandPipeline();
+
+                }
+                if (unitManager.isSelectCommandSystemLocked && (mousePosition.x < -5.5 && mousePosition.y < 4.5))
+                {
+                    unitManager.UnlockSelectCommandPipeline();
+                }
                 spawn(objectToInstantiate, cost);
             }
             else
@@ -74,15 +83,7 @@ public class Summon : MonoBehaviour
             }
         }
 
-        if(mousePosition.x < -5.5 && mousePosition.y <4.5)
-        {
-            unitManager.LockSelectCommandPipeline();
-
-        }
-        if (unitManager.isSelectCommandSystemLocked && (mousePosition.x < -5.5 && mousePosition.y < 4.5))
-        {
-            unitManager.UnlockSelectCommandPipeline();
-        }
+        
 
 
     }

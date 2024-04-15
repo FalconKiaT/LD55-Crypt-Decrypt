@@ -130,6 +130,7 @@ MonoBehaviour:
       Data3: 1144444811
       Data4: -253348193
     Path: event:/SFX/Player/Dying
+  deathfade: {fileID: 322526864765499946, guid: 4d61cf7a1cf8676429e0175f3963e011, type: 3}
 --- !u!95 &5910071472570423340
 Animator:
   serializedVersion: 7
@@ -289,7 +290,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 448
-  placing: 0
   m1: {fileID: 2800000, guid: 4b6aff1fb8a11314380a842da46d1bb1, type: 3}
   m2: {fileID: 2800000, guid: 839dcd2b6945186478b2600dd9f1f7c2, type: 3}
   mouse: {x: 0, y: 0, z: 0}
