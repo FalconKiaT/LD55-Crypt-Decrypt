@@ -9,19 +9,27 @@ public class SkellyPathfinder : MonoBehaviour
     public GameObject skeletonObject;
     public GameObject placeToMove;
     public GameObject gapDetector;
+    public GameObject jumpDetector;
+    Animator skeletonAnimator;
     bool canMove = true;
+    int collisionCounter = 0;
 
     public bool startMoving;
 
     bool canJump;
-    bool canDrop;
-    float speed = 0.1f;
+    bool jumping;
+    float speed;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // changes collider position
+        transform.position = skeletonObject.transform.position + new Vector3(0, 0, 0);
+        gapDetector.transform.position = skeletonObject.transform.position + new Vector3(0, -1, 0);
+
+        // get animator
+        skeletonAnimator = skeletonObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,76 +38,80 @@ public class SkellyPathfinder : MonoBehaviour
         if (startMoving)
         {
             CheckDirection();
+            AnimateSkeleton();
             MoveToPlace();
         }
+        else
+        {
+            skeletonAnimator.SetBool("isMoving", false);
+        }
     }
-    public IEnumerator CheckDirection() {
-        canMove = true;
-        float xDirection;
+    public void CheckDirection() {
+        CollisionChecker();
 
         // figures out delta x
         if (placeToMove.transform.position.x > skeletonObject.transform.position.x)
         {
-            speed = 0.01f;
-            xDirection = 1f;
+            speed = 0.02f;
         }
         else 
         {
-            speed = -0.01f;
-            xDirection = -1f;
+            speed = -0.02f;
         }
-
-        // changes collider position
-        transform.position = skeletonObject.transform.position + new Vector3(0, 0, 0);
-        gapDetector.transform.position = skeletonObject.transform.position + new Vector3(0, -1, 0);
 
         // if the skelly encounters a wall
-        if (!canMove && gapDetector.GetComponent<SkellyCollisionHandler>().canMove)
+        if (!canMove && jumpDetector.GetComponent<SkellyCollisionHandler>().getMove() && !jumping)
         {
             canMove = true;
-            transform.position = skeletonObject.transform.position +  new Vector3(0, 1, 0);
-            yield return new WaitForEndOfFrame();
-            canJump = false;
-            if (canMove)
-            {
-                canJump = true;
-            }
+            canJump = true;
         }
-        
-        // if the skelly encounters a gap
-        if (!gapDetector.GetComponent<SkellyCollisionHandler>().canMove && canMove) 
+        else if (!canMove && !jumping)
         {
-            gapDetector.transform.position = skeletonObject.transform.position + new Vector3(xDirection, -2, 0);
-            // if there is a block under
-            if (gapDetector.GetComponent<SkellyCollisionHandler>().canMove)
+            startMoving = false;
+        }
+    }
+
+    public void MoveToPlace() {
+        if (canMove)
+        {
+            // starts the animator
+            skeletonAnimator.SetFloat("directionX", -speed);
+            skeletonAnimator.SetBool("isMoving", true);
+
+            // determines what the skeleton is doing
+            if (canJump && !jumping)
             {
-                canMove = true;
-                canDrop = true;
+                skeletonObject.transform.Translate(new Vector3(speed*4f, 1.2f, 0)); 
+                jumping = true;
+                canJump = false;
             }
             else
             {
-                canMove = false;
-                canDrop = false;
+                skeletonObject.transform.Translate(new Vector3(speed, 0, 0));
+            }
+
+            // stops the jump
+            if (!gapDetector.GetComponent<SkellyCollisionHandler>().getMove())
+            {
+                jumping = false;
             }
         }
     }
 
-    public void MoveToPlace() { 
+    public void AnimateSkeleton()
+    {
         
-        if (canMove)
+    }
+
+    private void CollisionChecker()
+    {
+        if (collisionCounter == 0)
         {
-            if (canJump)
-            {
-                skeletonObject.transform.Translate(new Vector3(speed/2, 0.001f, 0));
-            }
-            else if (canDrop)
-            {
-                skeletonObject.transform.Translate(new Vector3(speed, 0, 0));
-            }
-            else
-            {
-                skeletonObject.transform.Translate(new Vector3(speed, 0, 0));
-            }
+            canMove = true;
+        }
+        else
+        {
+            canMove = false;
         }
     }
 
@@ -107,13 +119,18 @@ public class SkellyPathfinder : MonoBehaviour
     {
         if (collision != null)
         {
-            canMove = false;
-            canJump = false;
+            collisionCounter++;
             if (collision.name == "PlaceToMove")
             {
                 startMoving = false;
             }
         }
-        
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision != null)
+        {
+            collisionCounter--;
+        }
     }
 }

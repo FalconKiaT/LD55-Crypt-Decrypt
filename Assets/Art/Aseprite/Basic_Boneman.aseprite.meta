@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Basic_Boneman
     originalName: 
-    pivot: {x: 0, y: 0}
+    pivot: {x: 0.4736842, y: -0.88888896}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 0
-      height: 0
+      y: 31
+      width: 19
+      height: 18
     spriteID: 949a5cd703aabc248b00f88d5af705af
     spriteBone: []
     spriteOutline: []
@@ -140,7 +140,307 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: -44, y: -60}
+    uvTransform: {x: 4, y: 31}
+  - name: Basic_Boneman_Frame_1
+    originalName: 
+    pivot: {x: 0.4736842, y: -0.88888896}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 57
+      width: 19
+      height: 18
+    spriteID: 9c42184122b97d54b8362fa4094562af
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 57}
+  - name: Basic_Boneman_Frame_2
+    originalName: 
+    pivot: {x: 0.42105258, y: -0.88888896}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 83
+      width: 19
+      height: 18
+    spriteID: 0e8b0f54303570e43a58ac5eeeca8a0f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 83}
+  - name: Basic_Boneman_Frame_3
+    originalName: 
+    pivot: {x: 0.42105258, y: -0.94117653}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 58
+      y: 82
+      width: 19
+      height: 17
+    spriteID: df6e6ef415abda542859175f129a265a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 58, y: 82}
+  - name: Basic_Boneman_Frame_4
+    originalName: 
+    pivot: {x: 0.42105258, y: -0.88888896}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
+      y: 4
+      width: 19
+      height: 18
+    spriteID: 45360f815d27b31418ece6f1a1c73834
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 31, y: 4}
+  - name: Basic_Boneman_Frame_5
+    originalName: 
+    pivot: {x: 0.4736842, y: -0.88888896}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
+      y: 30
+      width: 19
+      height: 18
+    spriteID: 4eeab3e7309ac9b44bc333d7c3ec8d3b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 31, y: 30}
+  - name: Basic_Boneman_Frame_6
+    originalName: 
+    pivot: {x: 0.4736842, y: -0.88888896}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
+      y: 56
+      width: 19
+      height: 18
+    spriteID: ef90654e16a4f6e428b7b2f6f36c2f7c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 31, y: 56}
+  - name: Basic_Boneman_Frame_7
+    originalName: 
+    pivot: {x: 0.5263158, y: -0.88888896}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
+      y: 82
+      width: 19
+      height: 18
+    spriteID: f6959f18a26b38c4090060877385c3d9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 31, y: 82}
+  - name: Basic_Boneman_Frame_8
+    originalName: 
+    pivot: {x: 0.5263158, y: -0.94117653}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 58
+      y: 107
+      width: 19
+      height: 17
+    spriteID: f6301204ef0fac847b1f5bbc6bffb828
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 58, y: 107}
+  - name: Basic_Boneman_Frame_9
+    originalName: 
+    pivot: {x: 0.5263158, y: -0.88888896}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 58
+      y: 4
+      width: 19
+      height: 18
+    spriteID: 2740e56cf98d3c945b0b8b381fbea224
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 58, y: 4}
+  - name: Basic_Boneman_Frame_10
+    originalName: 
+    pivot: {x: 0.4736842, y: -0.94117653}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 85
+      y: 4
+      width: 19
+      height: 17
+    spriteID: 8117250f44a230340b17e34fab3d9ea2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: 4}
+  - name: Basic_Boneman_Frame_11
+    originalName: 
+    pivot: {x: 0.4736842, y: -0.88888896}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 58
+      y: 30
+      width: 19
+      height: 18
+    spriteID: 446ff525f4411a4419714e09fb8c9c03
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 58, y: 30}
+  - name: Basic_Boneman_Frame_12
+    originalName: 
+    pivot: {x: 0.4736842, y: -0.88888896}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 58
+      y: 56
+      width: 19
+      height: 18
+    spriteID: 5030697aaf010d1459a9bfcd27e1f9eb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 58, y: 56}
+  - name: Basic_Boneman_Frame_13
+    originalName: 
+    pivot: {x: 0.4736842, y: -0.84210527}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 19
+      height: 19
+    spriteID: 6bcbacb27caf812478e745f700f1f96f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Basic_Boneman_Frame_14
+    originalName: 
+    pivot: {x: 0.42105258, y: -0.94117653}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 85
+      y: 29
+      width: 19
+      height: 17
+    spriteID: ed2078dc3f2cffb4e91a9d00096e17dd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: 29}
+  - name: Basic_Boneman_Frame_15
+    originalName: 
+    pivot: {x: 0.4736842, y: -0.94117653}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 85
+      y: 54
+      width: 19
+      height: 17
+    spriteID: d2737de8b38862543b3959c75d8b2027
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: 54}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -150,18 +450,138 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Basic_Boneman
+    - name: Basic_Boneman_Frame_0
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 64
+        x: 15
+        y: 16
+        width: 19
+        height: 18
       spriteId: 949a5cd703aabc248b00f88d5af705af
+    - name: Basic_Boneman_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 15
+        y: 16
+        width: 19
+        height: 18
+      spriteId: 9c42184122b97d54b8362fa4094562af
+    - name: Basic_Boneman_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 16
+        y: 16
+        width: 19
+        height: 18
+      spriteId: 0e8b0f54303570e43a58ac5eeeca8a0f
+    - name: Basic_Boneman_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 16
+        y: 16
+        width: 19
+        height: 17
+      spriteId: df6e6ef415abda542859175f129a265a
+    - name: Basic_Boneman_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 16
+        y: 16
+        width: 19
+        height: 18
+      spriteId: 45360f815d27b31418ece6f1a1c73834
+    - name: Basic_Boneman_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 15
+        y: 16
+        width: 19
+        height: 18
+      spriteId: 4eeab3e7309ac9b44bc333d7c3ec8d3b
+    - name: Basic_Boneman_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 15
+        y: 16
+        width: 19
+        height: 18
+      spriteId: ef90654e16a4f6e428b7b2f6f36c2f7c
+    - name: Basic_Boneman_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 14
+        y: 16
+        width: 19
+        height: 18
+      spriteId: f6959f18a26b38c4090060877385c3d9
+    - name: Basic_Boneman_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 14
+        y: 16
+        width: 19
+        height: 17
+      spriteId: f6301204ef0fac847b1f5bbc6bffb828
+    - name: Basic_Boneman_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 14
+        y: 16
+        width: 19
+        height: 18
+      spriteId: 2740e56cf98d3c945b0b8b381fbea224
+    - name: Basic_Boneman_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 15
+        y: 16
+        width: 19
+        height: 17
+      spriteId: 8117250f44a230340b17e34fab3d9ea2
+    - name: Basic_Boneman_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 15
+        y: 16
+        width: 19
+        height: 18
+      spriteId: 446ff525f4411a4419714e09fb8c9c03
+    - name: Basic_Boneman_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 15
+        y: 16
+        width: 19
+        height: 18
+      spriteId: 5030697aaf010d1459a9bfcd27e1f9eb
+    - name: Basic_Boneman_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 15
+        y: 16
+        width: 19
+        height: 19
+      spriteId: 6bcbacb27caf812478e745f700f1f96f
+    - name: Basic_Boneman_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 16
+        y: 16
+        width: 19
+        height: 17
+      spriteId: ed2078dc3f2cffb4e91a9d00096e17dd
+    - name: Basic_Boneman_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 15
+        y: 16
+        width: 19
+        height: 17
+      spriteId: d2737de8b38862543b3959c75d8b2027
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 48, y: 64}
+  canvasSize: {x: 48, y: 48}

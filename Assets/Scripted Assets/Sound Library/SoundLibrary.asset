@@ -15,18 +15,17 @@ MonoBehaviour:
   masterBus: Master
   musicBus: Music
   sfxBus: SFX
-  onLevelCombatPath: SFX/OnLevelCombat
   _tempHurt:
     Guid:
       Data1: -203240554
       Data2: 1118727495
       Data3: 2127315108
       Data4: -2005252412
-    Path: event:/Placeholder Event
+    Path: event:/Testing/Placeholder Event
   _tempBattleMusic:
     Guid:
-      Data1: -203240554
-      Data2: 1118727495
-      Data3: 2127315108
-      Data4: -2005252412
-    Path: event:/Placeholder Event
+      Data1: -239055478
+      Data2: 1160893251
+      Data3: 1103728518
+      Data4: 1004914050
+    Path: event:/Music/Levels/Level Music

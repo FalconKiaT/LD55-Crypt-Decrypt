@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FKTools;
 
-public class Entity : MonoBehaviour
+public enum EntityTypes
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    NULL,
+    Boneman,
+    Catapult,
+    ArmoredBoneman,
+    Bomb,
+    SmallEnemy
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public class Entity : FKMonoBehaviour
+{
+    public EntityTypes entityType;
 }
