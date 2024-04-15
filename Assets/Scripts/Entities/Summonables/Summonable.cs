@@ -32,11 +32,11 @@ public abstract class Summonable : Entity
         // starts pathfinding
         entityPathfinder.StartPathfinding(target);
 
-        if (TESTINGROUTINE != null)
-        {
-           StopCoroutine(TESTINGROUTINE);
-        }
-        TESTINGROUTINE = StartCoroutine(TESTINGMOVEMENT(target));
+        //if (TESTINGROUTINE != null)
+        //{
+           //StopCoroutine(TESTINGROUTINE);
+        //}
+        //TESTINGROUTINE = StartCoroutine(TESTINGMOVEMENT(target));
     }
 
     protected virtual void Stack(GameObject target)
