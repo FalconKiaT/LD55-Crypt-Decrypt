@@ -35,7 +35,6 @@ public class CommandMenuManager : MonoBehaviour
     [SerializeField] private RectTransform boardOption;
     [SerializeField] private RectTransform unloadOption;
     [SerializeField] private RectTransform fireOption;
-    [SerializeField] private RectTransform attackOption;
 
     // Local variables
     private RectTransform startingPos;
@@ -49,13 +48,12 @@ public class CommandMenuManager : MonoBehaviour
 
         // Populate dictionary
         menuOptions.Add(CommandType.MoveTo, moveToOption);
-        menuOptions.Add(CommandType.Carry, carryToOption);
-        menuOptions.Add(CommandType.ReleaseCarry, releaseOption);
+        menuOptions.Add(CommandType.Grab, carryToOption);
+        menuOptions.Add(CommandType.Release, releaseOption);
         menuOptions.Add(CommandType.Stack, stackOption);
         menuOptions.Add(CommandType.BoardCatapult, boardOption);
         menuOptions.Add(CommandType.UnloadCatapult, unloadOption);
         menuOptions.Add(CommandType.FireCatapult, fireOption);
-        menuOptions.Add(CommandType.Attack, attackOption);
 
         // Subscribe to input
         InputManager.OnSelectClicked += OnSelectClicked;
@@ -230,7 +228,6 @@ public class CommandMenuManager : MonoBehaviour
         boardOption.gameObject.SetActive(false);
         unloadOption.gameObject.SetActive(false);
         fireOption.gameObject.SetActive(false); 
-        attackOption.gameObject.SetActive(false);
     }
 
     /// <summary>
