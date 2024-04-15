@@ -80,6 +80,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5f2fe9fefa3aac4ebdd2f9776abe4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpSound:
+    Guid:
+      Data1: 1722118180
+      Data2: 1226304680
+      Data3: 853451142
+      Data4: 1048507290
+    Path: event:/SFX/Player/Jumping
+  walkingSound:
+    Guid:
+      Data1: 155134117
+      Data2: 1207438185
+      Data3: -1715054202
+      Data4: 1667469091
+    Path: event:/SFX/Player/Walking
   Data: {fileID: 11400000, guid: 58766227cfb76724d9ed0964df664fdd, type: 2}
   _groundCheckPoint: {fileID: 1209587550774730476}
   _groundCheckSize: {x: 0.5, y: 0.07}
