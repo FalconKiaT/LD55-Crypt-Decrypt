@@ -126,7 +126,7 @@ public class CommandMenuManager : MonoBehaviour
             {
                 // Player clicked inside the menu but not an option, ignore
                 string debug = "PLAYER CLICKED INSIDE THE MENU\n";
-                Debug.Log(debug);
+                if (UnitManager.instance.doDebugLog) Debug.Log(debug);
                 ResetClickedListenerBools();
                 yield return null;
                 continue;
@@ -136,7 +136,7 @@ public class CommandMenuManager : MonoBehaviour
                 // The player clicked away of the menu, close it and report back to the unit manager
                 // Player clicked inside the menu but not an option, ignore
                 string debug = "EXITED THE COMMAND MENU DUE TO CLICKING OUTSIDE\n";
-                Debug.Log(debug);
+                if (UnitManager.instance.doDebugLog) Debug.Log(debug);
                 StartCoroutine(CloseCommandMenu());
                 yield break;
             }
@@ -215,7 +215,7 @@ public class CommandMenuManager : MonoBehaviour
     public void ExecuteCommand(CommandOption input)
     {
         selectedCommand = input.getCommand();
-        Debug.Log("SELECTED COMMAND BUTTON PRESSED = " + selectedCommand.ToString());
+        if (UnitManager.instance.doDebugLog) Debug.Log("SELECTED COMMAND BUTTON PRESSED = " + selectedCommand.ToString());
         // Player made a choice
         buttonWasPressed = true;
     }

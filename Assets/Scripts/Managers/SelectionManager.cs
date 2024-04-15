@@ -109,7 +109,7 @@ public class SelectionManager : FKMonoBehaviour
             if (currCollider.TryGetComponent(out ISelectable selectable))
             {
                 selectable.OnSelected();
-                Debug.Log("ADDED = " + currCollider.name);
+                if (UnitManager.instance.doDebugLog) Debug.Log("ADDED = " + currCollider.name);
             }
         }
         // Finished
