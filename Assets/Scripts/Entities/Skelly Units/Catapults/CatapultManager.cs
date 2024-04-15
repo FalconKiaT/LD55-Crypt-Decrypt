@@ -25,7 +25,7 @@ public class CatapultManager : MonoBehaviour
     public GameObject pointFour;
 
     [Header("Skeleton Variables")]
-    public GameObject skeletonObject;
+    GameObject skeletonObject;
     public GameObject targetDestination;
     public bool toss;
     public bool loadCatapult;
@@ -51,7 +51,7 @@ public class CatapultManager : MonoBehaviour
         }
     }
 
-    public void ParabolaMaker()
+    private void ParabolaMaker()
     {
         // determine deltaX and deltaY
         deltaX = targetDestination.transform.position.x - skeletonObject.transform.position.x;
@@ -77,7 +77,7 @@ public class CatapultManager : MonoBehaviour
         }
     }
 
-    public void LineMaker()
+    private void LineMaker()
     {
         // start and end points
         pointOne.transform.position = skeletonObject.transform.position;
@@ -97,11 +97,16 @@ public class CatapultManager : MonoBehaviour
         
     }
 
-    public void ThrowSkeleton()
+    private void ThrowSkeleton()
     {
         Rigidbody2D skeletonPhysics = skeletonObject.GetComponent<Rigidbody2D>();
         skeletonPhysics.velocityX = velocityX;
         skeletonPhysics.velocityY = velocityY;
         loadCatapult = false;
+    }
+
+    public void SetSkeleton(GameObject gameObject)
+    {
+        skeletonObject = gameObject;
     }
 }
