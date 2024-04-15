@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using FKTools;
 
 public enum EntityTypes
 {
     NULL,
-    Boneman,
+    BasicBoneman,
     Catapult,
     ArmoredBoneman,
     Bomb,
@@ -19,8 +20,18 @@ public abstract class Entity : FKMonoBehaviour, ISelectable, ICommandable, IDama
 {
     public EntityTypes entityType;
 
+    // Events
+    public UnityEvent<int> tookDamage;
+
     public int health = 0;
     public int damage = 0;
+
+    [SerializeField] private float deathDelay = 0;
+
+    public bool canFight;
+
+    protected Animator animator;
+    protected Rigidbody2D rb;
 
     public virtual void TakeDamage(int damage)
     {
@@ -30,10 +41,24 @@ public abstract class Entity : FKMonoBehaviour, ISelectable, ICommandable, IDama
         }
         else
             health -= damage;
+
+        tookDamage?.Invoke(damage);
     }
 
     public virtual void Death()
     {
+        StartCoroutine(AttackCo());
+    }
+
+    public void AttackAnim(Vector2 attackDirection)
+    {
+        animator.SetFloat("directionX", Mathf.Sign(attackDirection.x));
+        animator.SetTrigger("attackTrigger");
+    }
+
+    private IEnumerator AttackCo()
+    {
+        yield return FKRoutines.WaitForSecondsPauseAware(deathDelay);
         Destroy(gameObject);
     }
 

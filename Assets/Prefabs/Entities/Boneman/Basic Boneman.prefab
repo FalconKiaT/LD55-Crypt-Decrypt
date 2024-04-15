@@ -537,12 +537,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3199702099075950642}
-  - component: {fileID: 3515814268614227299}
   - component: {fileID: 2012154238120754409}
   - component: {fileID: 8470689279922353790}
   - component: {fileID: 4878640863784426031}
-  - component: {fileID: 6466238813045052213}
-  - component: {fileID: 8735862066160410216}
+  - component: {fileID: 717361817801476491}
   m_Layer: 8
   m_Name: Basic Boneman
   m_TagString: Untagged
@@ -570,19 +568,6 @@ Transform:
   - {fileID: 5928692201150678975}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3515814268614227299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8505864991168572438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8946c568d38bc734c812a884f0e791e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityType: 1
 --- !u!95 &2012154238120754409
 Animator:
   serializedVersion: 7
@@ -678,7 +663,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.9, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6466238813045052213
+--- !u!114 &717361817801476491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -687,25 +672,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8505864991168572438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94b28215140b09e4cbca477599581a24, type: 3}
+  m_Script: {fileID: 11500000, guid: 7187df6b290d2e44996f801e3e0daaa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 0
-  skeletonBottom: {fileID: 0}
---- !u!114 &8735862066160410216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8505864991168572438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4f99487aad6d494d8d374e7f91fef92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  move: 0
-  catapultObject: {fileID: 0}
+  entityType: 1
+  health: 1
+  damage: 0
+  deathDelay: 0
+  canFight: 0
 --- !u!1001 &5234792066334691962
 PrefabInstance:
   m_ObjectHideFlags: 0
