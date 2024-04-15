@@ -34,7 +34,7 @@ public abstract class Summonable : Entity
 
         //if (TESTINGROUTINE != null)
         //{
-        //   StopCoroutine(TESTINGROUTINE);
+           //StopCoroutine(TESTINGROUTINE);
         //}
         //TESTINGROUTINE = StartCoroutine(TESTINGMOVEMENT(target));
     }
