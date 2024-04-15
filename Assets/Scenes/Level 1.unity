@@ -417,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141458515207758663, guid: 045eda536b355db4486c3f3394cb82fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.62
+      value: -21.87
       objectReference: {fileID: 0}
     - target: {fileID: 8141458515207758663, guid: 045eda536b355db4486c3f3394cb82fe, type: 3}
       propertyPath: m_LocalPosition.y
@@ -28322,7 +28322,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonObject: {fileID: 0}
-  placeToMove: {fileID: 0}
   gapDetector: {fileID: 6147672873289130652}
   jumpDetector: {fileID: 8934104642845476377}
   startMoving: 0
