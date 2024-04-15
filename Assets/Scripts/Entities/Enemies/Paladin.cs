@@ -16,7 +16,9 @@ public class Paladin : Enemy
     protected override void Start()
     {
         base.Start();
-        currentPatrolPoint = patrolPoints[patrolIndex];
+
+        if (patrolPoints.Count > 0)
+            currentPatrolPoint = patrolPoints[patrolIndex];
     }
 
     private void FixedUpdate()

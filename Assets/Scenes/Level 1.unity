@@ -1211,6 +1211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityType: 6
+  tookDamage:
+    m_PersistentCalls:
+      m_Calls: []
   health: 1
   damage: 0
   deathDelay: 0

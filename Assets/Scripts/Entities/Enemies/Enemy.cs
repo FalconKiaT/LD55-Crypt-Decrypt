@@ -29,22 +29,22 @@ public class Enemy : Entity
 
         if (entity.TryGetComponent(out IDamageable damageable))
         {
-            isInCombat = true;
+            isInCombat = true;     
+
+            Vector2 enemyAttackDirection = entity.gameObject.transform.position - transform.position;
+            enemyAttackDirection.Normalize();
+
+            entity.TakeDamage(damage);
+            AttackAnim(enemyAttackDirection);
 
             if (entity.canFight)
             {
                 Vector2 alliedAttackDirection = transform.position - entity.gameObject.transform.position;
                 alliedAttackDirection.Normalize();
 
+                TakeDamage(entity.damage);
                 entity.AttackAnim(alliedAttackDirection);
             }
-            entity.TakeDamage(damage);
-
-            Vector2 enemyAttackDirection = entity.gameObject.transform.position - transform.position;
-            enemyAttackDirection.Normalize();
-
-            AttackAnim(enemyAttackDirection);
-            TakeDamage(entity.damage);
         }
     }
 

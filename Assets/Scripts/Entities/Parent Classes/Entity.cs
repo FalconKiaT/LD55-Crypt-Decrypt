@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using FKTools;
 
 public enum EntityTypes
@@ -18,6 +19,9 @@ public enum EntityTypes
 public abstract class Entity : FKMonoBehaviour, ISelectable, ICommandable, IDamageable
 {
     public EntityTypes entityType;
+
+    // Events
+    public UnityEvent<int> tookDamage;
 
     public int health = 0;
     public int damage = 0;
@@ -37,6 +41,8 @@ public abstract class Entity : FKMonoBehaviour, ISelectable, ICommandable, IDama
         }
         else
             health -= damage;
+
+        tookDamage?.Invoke(damage);
     }
 
     public virtual void Death()
