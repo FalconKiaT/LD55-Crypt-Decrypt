@@ -5,17 +5,33 @@ using UnityEngine;
 
 public class SkellyCollisionHandler : MonoBehaviour
 {
-    public bool canMove = false;
+    private int canMove;
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision != null)
+        if (collision!=null)
         {
-            canMove = true;
+            canMove++;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision!=null)
+        {
+            canMove--;
+        }
+    }
+
+    public bool getMove()
+    {
+        if (canMove == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
