@@ -898,6 +898,22 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 1502340759}
+    - target: {fileID: 3004641477065208104, guid: 3480b7d72c3a9f54fb185e25138a6eeb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004641477065208104, guid: 3480b7d72c3a9f54fb185e25138a6eeb, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004641477065208104, guid: 3480b7d72c3a9f54fb185e25138a6eeb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004641477065208104, guid: 3480b7d72c3a9f54fb185e25138a6eeb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4748338563113914038, guid: 3480b7d72c3a9f54fb185e25138a6eeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.7399998
@@ -941,6 +957,22 @@ PrefabInstance:
     - target: {fileID: 7078138812553079074, guid: 3480b7d72c3a9f54fb185e25138a6eeb, type: 3}
       propertyPath: m_Name
       value: Paladin
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302782002183002122, guid: 3480b7d72c3a9f54fb185e25138a6eeb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302782002183002122, guid: 3480b7d72c3a9f54fb185e25138a6eeb, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302782002183002122, guid: 3480b7d72c3a9f54fb185e25138a6eeb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302782002183002122, guid: 3480b7d72c3a9f54fb185e25138a6eeb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
