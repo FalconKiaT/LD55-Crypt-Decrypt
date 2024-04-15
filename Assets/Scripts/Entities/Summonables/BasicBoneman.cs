@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class BasicBoneman : Summonable
 {
-    [SerializeField] private Transform carryPosition;
+    private EntityPathfinder pathFinderComponent;
+
+    private void Awake()
+    {
+        pathFinderComponent = GetComponent<EntityPathfinder>();
+    }
 
     public override void OnCommand(CommandType inputCommand, Vector2 target, Entity targetEntity)
     {
         switch (inputCommand)
         {
             case CommandType.MoveTo:
-                MoveTo(target);
+                pathFinderComponent.StartPathfinding(target);
                 break;
             case CommandType.Release:
-                
-                isHolding = false;
+                // TODO: IMPLEMENT
+                isHolding = false; // REMOVE THIS AND HANDLE WITH MOVEMENT
                 break;
             case CommandType.Grab:
-                isHolding = true;
-                HandleBombGrab(targetEntity);
+                // TODO: IMPLEMENT
+                isHolding = true; // REMOVE THIS AND HANDLE WITH MOVEMENT
                 break;
             case CommandType.Stack:
                 // TODO: IMPLEMENT
@@ -28,11 +33,5 @@ public class BasicBoneman : Summonable
                 // TODO: IMPLEMENT
                 break;
         }
-    }
-
-    private void HandleBombGrab(Entity targetEntity)
-    {
-        targetEntity.transform.position = carryPosition.position;
-        targetEntity.transform.parent = carryPosition.transform;
     }
 }
