@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6688780392466007331}
   - component: {fileID: 3588937027347392870}
   - component: {fileID: 6954721841698880598}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Armored Boneman
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,11 +70,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 6
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 263af6abd94c82742b9e400df82d009b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -137,6 +137,8 @@ MonoBehaviour:
   entityType: 3
   health: 2
   damage: 2
+  deathDelay: 0.35
+  canFight: 1
 --- !u!1 &6543195112441151214
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6311193148660272566}
   - component: {fileID: 3199834431307764763}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

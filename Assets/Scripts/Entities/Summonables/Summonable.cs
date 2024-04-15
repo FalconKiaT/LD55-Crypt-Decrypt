@@ -5,6 +5,12 @@ using UnityEngine;
 
 public abstract class Summonable : Entity
 {
+    protected virtual void Start()
+    {
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     // Populate Dictionary of valid commands for the boneman
     private void Awake()
     {

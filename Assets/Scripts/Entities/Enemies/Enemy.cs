@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Enemy : Entity
 {
-    private bool isInCombat = false;
+    protected bool isInCombat = false;
+
+    protected virtual void Start()
+    {
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Entity")
+        if (collision.gameObject.tag == "Entity" || collision.gameObject.tag == "Player")
         {
             // Enter Combat
             EnterCombat(collision.gameObject.GetComponent<Entity>());
@@ -16,15 +23,27 @@ public class Enemy : Entity
     }
 
     private void EnterCombat(Entity entity)
-    {
-        isInCombat = true;
-
+    {     
         if (!entity)
             return;
 
         if (entity.TryGetComponent(out IDamageable damageable))
         {
-            damageable.TakeDamage(health);
+            isInCombat = true;
+
+            if (entity.canFight)
+            {
+                Vector2 alliedAttackDirection = transform.position - entity.gameObject.transform.position;
+                alliedAttackDirection.Normalize();
+
+                entity.AttackAnim(alliedAttackDirection);
+            }
+            entity.TakeDamage(damage);
+
+            Vector2 enemyAttackDirection = entity.gameObject.transform.position - transform.position;
+            enemyAttackDirection.Normalize();
+
+            AttackAnim(enemyAttackDirection);
             TakeDamage(entity.damage);
         }
     }
