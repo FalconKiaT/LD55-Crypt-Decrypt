@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     public float movePrecision = 1.0f;
 
     [Header("Physics")]
+    public float jumpCooldown = 2f;
     public float speed = 200f, jumpForce = 100f;
     public float nextWaypointDistance = 3f;
     public float jumpNodeHeightRequirement = 0.8f;
@@ -49,6 +50,7 @@ public class EnemyAI : MonoBehaviour
         }
         if (Mathf.Abs(transform.position.x - target.x) <= movePrecision)
         {
+            
             activateDistance = 0f;
         }
         else
@@ -143,7 +145,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator JumpCoolDown()
     {
         isOnCoolDown = true; 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(jumpCooldown);
         isOnCoolDown = false;
     }
 }

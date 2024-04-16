@@ -717,6 +717,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1118315091}
     - target: {fileID: 6974344127470571586, guid: 045eda536b355db4486c3f3394cb82fe, type: 3}
+      propertyPath: bones
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974344127470571586, guid: 045eda536b355db4486c3f3394cb82fe, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 405009379}

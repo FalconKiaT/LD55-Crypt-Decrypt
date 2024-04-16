@@ -116,6 +116,7 @@ public class Summon : MonoBehaviour
             if (removeBones(cost))
             {
                 GameObject temp = Instantiate(objectToInstantiate, mousePosition, Quaternion.identity);
+                temp.GetComponent<EnemyAI>().target = mousePosition;
                 summons.Add(temp);
 
 
