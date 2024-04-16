@@ -34,17 +34,12 @@ public class WeightedObject : MonoBehaviour
         }
     }
 
-    // Continuosly check aboce
     private IEnumerator RayCastAtBox()
-    {
-        Collider2D[] colliderArray;
-        bool foundWeightOnCast = false;
-
-<<<<<<< Updated upstream
-    private void OnTriggerStay2D(Collider2D collision)
-=======
+	{
         while (true)
         {
+            Collider2D[] colliderArray;
+            bool foundWeightOnCast = false;
             colliderArray = Physics2D.OverlapBoxAll(boxCastCenter.position, groundCheckSize, 0, layersToCheck);
             // Check the result list
             foreach (Collider2D currCollider in colliderArray)
@@ -78,7 +73,6 @@ public class WeightedObject : MonoBehaviour
 
     /*
     private void OnTriggerEnter2D(Collider2D collision)
->>>>>>> Stashed changes
     {
         if (WeightAbove == null)
         {

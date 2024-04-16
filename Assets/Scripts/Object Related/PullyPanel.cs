@@ -55,9 +55,6 @@ public class PullyPanel : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
-    private void OnTriggerStay2D(Collider2D collision)
-=======
     // Raycasting routine
     private IEnumerator RayCastAtBox()
     {
@@ -98,7 +95,6 @@ public class PullyPanel : MonoBehaviour
 
     /*
     private void OnTriggerEnter2D(Collider2D collision)
->>>>>>> Stashed changes
     {
         if (weightAbove == null)
         {
@@ -116,6 +112,8 @@ public class PullyPanel : MonoBehaviour
             weightAbove = null;
         }
     }
+	
+	private void OnTriggerStay2D(Collider2D collision)
     */
 
     private void MoveDown()

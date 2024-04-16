@@ -33,11 +33,8 @@ public class Summon : MonoBehaviour
         player = gameObject.transform.parent.gameObject;
         EventData.OnSummonableDeath += refund;
         SkeleToSpawn = false;
-<<<<<<< Updated upstream
-}
-=======
     }
->>>>>>> Stashed changes
+
 
     public void refund()
     {

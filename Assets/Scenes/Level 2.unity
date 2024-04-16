@@ -25759,31 +25759,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1455069592}
     m_Modifications:
-<<<<<<< Updated upstream
-    - target: {fileID: 4312024603479742045, guid: c9852bfeb6c1eee49a47e13a6f263524, type: 3}
-      propertyPath: m_Size.x
-      value: 0.7399795
-      objectReference: {fileID: 0}
-    - target: {fileID: 4312024603479742045, guid: c9852bfeb6c1eee49a47e13a6f263524, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4312024603479742045, guid: c9852bfeb6c1eee49a47e13a6f263524, type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4312024603479742045, guid: c9852bfeb6c1eee49a47e13a6f263524, type: 3}
-      propertyPath: m_EdgeRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4913719234267709163, guid: c9852bfeb6c1eee49a47e13a6f263524, type: 3}
-      propertyPath: m_Mass
-      value: 1
-=======
     - target: {fileID: 922234788121974045, guid: c9852bfeb6c1eee49a47e13a6f263524, type: 3}
       propertyPath: entityType
       value: 7
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 4920028431810893944, guid: c9852bfeb6c1eee49a47e13a6f263524, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26576,13 +26554,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
-=======
     - target: {fileID: 2255444301448198540, guid: d62c4d83599db544a80bcf038de8a7bb, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.97
       objectReference: {fileID: 0}
->>>>>>> Stashed changes
     - target: {fileID: 6318049376937726598, guid: d62c4d83599db544a80bcf038de8a7bb, type: 3}
       propertyPath: m_Name
       value: Pully Panel
@@ -26591,13 +26566,10 @@ PrefabInstance:
       propertyPath: linkedPully
       value: 
       objectReference: {fileID: 1085596621}
-<<<<<<< Updated upstream
-=======
     - target: {fileID: 8269457060610247145, guid: d62c4d83599db544a80bcf038de8a7bb, type: 3}
       propertyPath: groundCheckSize.y
       value: 1.02
       objectReference: {fileID: 0}
->>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
