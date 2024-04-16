@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityType: 2
+  isHolding: 0
   tookDamage:
     m_PersistentCalls:
       m_Calls:
@@ -231,6 +232,17 @@ MonoBehaviour:
   damage: 0
   deathDelay: 0
   canFight: 0
+  deathSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  animator: {fileID: 0}
+  rb: {fileID: 0}
+  entityPathfinder: {fileID: 0}
+  boneCost: 4
 --- !u!1 &3270185789712171812
 GameObject:
   m_ObjectHideFlags: 0

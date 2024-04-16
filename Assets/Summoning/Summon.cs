@@ -30,6 +30,8 @@ public class Summon : MonoBehaviour
         setSkele(objectToInstantiate, 1);
         uiManager = GetComponent<UIManager>();
         player = gameObject.transform.parent.gameObject;
+        EventData.OnSummonableDeath += refund;
+
     }
 
     public void refund()
@@ -43,6 +45,12 @@ public class Summon : MonoBehaviour
         summons.Clear();
         bones = totalbones;
     }
+
+    public void refund(int incoming)
+    {
+        bones += incoming;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -87,10 +95,6 @@ public class Summon : MonoBehaviour
 
 
     }
-
-    public void pausepipeline()
-    {
-    }
     public void setSkele(GameObject temp, int tempcost)
     {
         setSkele(temp);
@@ -116,6 +120,7 @@ public class Summon : MonoBehaviour
             if (removeBones(cost))
             {
                 GameObject temp = Instantiate(objectToInstantiate, mousePosition, Quaternion.identity);
+                temp.GetComponent<EnemyAI>().target = mousePosition;
                 summons.Add(temp);
 
 
@@ -166,6 +171,8 @@ public class Summon : MonoBehaviour
         bones++;
         totalbones++;
     }
+
+
 
     public int getTotalBones()
     {

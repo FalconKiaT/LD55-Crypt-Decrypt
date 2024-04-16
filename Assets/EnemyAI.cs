@@ -5,11 +5,13 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     [Header("Pathfinding")]
-    public Transform target;
+    public Vector3 target;
     public float activateDistance = 50f;
     public float pathUpdateSeconds = 0.5f;
+    public float movePrecision = 1.0f;
 
     [Header("Physics")]
+    public float jumpCooldown = 2f;
     public float speed = 200f, jumpForce = 100f;
     public float nextWaypointDistance = 3f;
     public float jumpNodeHeightRequirement = 0.8f;
@@ -46,13 +48,20 @@ public class EnemyAI : MonoBehaviour
         {
             PathFollow();
         }
+        if (Mathf.Abs(transform.position.x - target.x) <= movePrecision)
+        {
+            
+            activateDistance = 0f;
+        }
+        else
+            activateDistance = 50f;
     }
 
     private void UpdatePath()
     {
         if (followEnabled && TargetInDistance() && seeker.IsDone())
         {
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
+            seeker.StartPath(rb.position, target, OnPathComplete);
         }
     }
 
@@ -121,7 +130,7 @@ public class EnemyAI : MonoBehaviour
 
     private bool TargetInDistance()
     {
-        return Vector2.Distance(transform.position, target.transform.position) < activateDistance;
+        return Vector2.Distance(transform.position, target) < activateDistance;
     }
 
     private void OnPathComplete(Path p)
@@ -136,7 +145,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator JumpCoolDown()
     {
         isOnCoolDown = true; 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(jumpCooldown);
         isOnCoolDown = false;
     }
 }
