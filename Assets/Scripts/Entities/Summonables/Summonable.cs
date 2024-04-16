@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Summonable : Entity
 {
     public EntityPathfinder entityPathfinder;
+    public int boneCost = 0;
 
     protected virtual void Start()
     {
@@ -53,6 +54,12 @@ public abstract class Summonable : Entity
         skellyBoarder.SetBoard(true, target);
 
         // set setboard as false to stop the boarding process
+    }
+
+    public override void Death()
+    {
+        EventData.RaiseOnSummonableDeath(boneCost);
+        base.Death();
     }
 
     private IEnumerator TESTINGMOVEMENT(Vector2 target)
