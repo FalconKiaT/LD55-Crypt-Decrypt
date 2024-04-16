@@ -15,6 +15,8 @@ public static class EventData
 
     public static void RaiseOnSummonableDeath(int bones) => OnSummonableDeath?.Invoke(bones);
 
+    public static System.Action OnRaiseCheckpoint;
+    public static void RaiseOnCheckpoint() => OnRaiseCheckpoint?.Invoke();
     //public static System.Action OnPause?????????
 
 }

@@ -8,6 +8,8 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerActions
 {
     private PlayerControls playerControls;
 
+    public static bool isInteracting = false;
+
     #region INPUT EVENTS
 
     /// <summary>
@@ -119,5 +121,17 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerActions
     public void OnCameraReset(InputAction.CallbackContext context)
     {
         if (context.performed) OnCameraResetClicked?.Invoke();
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isInteracting = true;
+        }
+        if (context.canceled)
+        {
+            isInteracting = false;
+        }
     }
 }

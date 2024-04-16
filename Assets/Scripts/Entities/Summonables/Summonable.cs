@@ -12,6 +12,8 @@ public abstract class Summonable : Entity
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         entityPathfinder = GetComponent<EntityPathfinder>();
+
+        EventData.OnRaiseCheckpoint += Death;
     }
 
     // Local Variables
@@ -58,6 +60,7 @@ public abstract class Summonable : Entity
 
     public override void Death()
     {
+        EventData.OnRaiseCheckpoint -= Death;
         EventData.RaiseOnSummonableDeath(boneCost);
         base.Death();
     }
