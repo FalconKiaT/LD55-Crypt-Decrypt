@@ -26,16 +26,16 @@ public class WeightedObject : MonoBehaviour
     {
         if (WeightAbove == null)
         {
-            if(collision.gameObject.GetComponentInChildren<WeightedObject>() != null)
+            if(collision.gameObject.TryGetComponent(out WeightedObject weight))
             {
-               WeightAbove = collision.gameObject.GetComponentInChildren<WeightedObject>();
+                WeightAbove = weight;
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponentInChildren<WeightedObject>() != null)
+        if (!collision.gameObject.TryGetComponent(out WeightedObject weight))
         {
             WeightAbove = null;
         }

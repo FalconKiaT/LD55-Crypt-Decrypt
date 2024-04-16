@@ -6,11 +6,12 @@ using UnityEngine;
 public class BasicBoneman : Summonable
 {
     [SerializeField] private Transform carryPosition, grabPositionLeft, grabPositionRight;
-    [SerializeField] private Entity grabbedEntity;
+    [SerializeField] private float grabRadius = 0.5f;
     [SerializeField] private float droppedRadius = 0.6f;
-    private GameObject dummyTransform;
     private EnemyAI enemyAI;
 
+    private Entity targetGrabbedEntity;
+    private Entity grabbedEntity;
     private bool hasBomb;
     private bool hasCrate;
 
@@ -23,11 +24,16 @@ public class BasicBoneman : Summonable
 
     private void Update()
     {
-        
         if (grabbedEntity != null && Vector2.Distance(grabbedEntity.transform.position, transform.position) > droppedRadius)
         {
             HandleCrateRelease();
         }
+
+        if (targetGrabbedEntity && !isHolding)
+        {
+            MoveTowards(targetGrabbedEntity);
+        }
+
     }
 
     public override void OnCommand(CommandType inputCommand, Vector2 target, Entity targetEntity)
@@ -38,14 +44,11 @@ public class BasicBoneman : Summonable
                 enemyAI.target = target;
                 break;
             case CommandType.Release:
-                isHolding = false;
                 HandleBombRelease();
                 HandleCrateRelease();
                 break;
             case CommandType.Grab:
-                isHolding = true;
-                HandleBombGrab(targetEntity);
-                HandleCrateGrab(targetEntity);
+                targetGrabbedEntity = targetEntity;
                 break;
             case CommandType.Stack:
                 // TODO: IMPLEMENT
@@ -56,16 +59,30 @@ public class BasicBoneman : Summonable
         }
     }
 
+    private void MoveTowards(Entity targetEntity)
+    {
+        enemyAI.target = targetEntity.transform.position;
+
+        if (Vector3.Distance(targetEntity.transform.position, transform.position) <= grabRadius)
+        {
+            HandleBombGrab(targetEntity);
+            HandleCrateGrab(targetEntity);
+            targetGrabbedEntity = null;
+        }
+    }
+
     private void HandleBombGrab(Entity targetEntity)
     {
         if (targetEntity.gameObject.TryGetComponent(out Bomb bomb))
         {
+            isHolding = true;
             bomb.HasBeenGrabbed();
             grabbedEntity = targetEntity;
             targetEntity.rb.bodyType = RigidbodyType2D.Kinematic;
             targetEntity.transform.position = carryPosition.position;
             targetEntity.transform.parent = carryPosition.transform;
 
+            isHolding = true;
             hasBomb = true;
         }
     }
@@ -78,6 +95,7 @@ public class BasicBoneman : Summonable
             grabbedEntity.transform.parent = null;
             grabbedEntity.Death();
 
+            isHolding = false;
             hasBomb = false;
         }
     }
@@ -87,7 +105,7 @@ public class BasicBoneman : Summonable
         if (targetEntity.gameObject.TryGetComponent(out Crate crate))
         {
             grabbedEntity = targetEntity;
-            //grabbedEntity.rb.bodyType = RigidbodyType2D.Kinematic;
+            grabbedEntity.rb.bodyType = RigidbodyType2D.Kinematic;
             if ((transform.position.x - targetEntity.gameObject.transform.position.x) < 0)
             {
                 targetEntity.transform.position = grabPositionRight.position;
@@ -99,6 +117,7 @@ public class BasicBoneman : Summonable
                 targetEntity.transform.parent = grabPositionLeft.transform;
             }
 
+            isHolding = true;
             hasCrate = true;
         }
     }
@@ -109,6 +128,7 @@ public class BasicBoneman : Summonable
         {
             grabbedEntity.rb.bodyType = RigidbodyType2D.Dynamic;
             grabbedEntity.transform.parent = null;
+            isHolding = false;
             hasCrate = false;
         }
     }

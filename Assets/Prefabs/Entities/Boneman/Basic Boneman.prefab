@@ -175,8 +175,8 @@ MonoBehaviour:
   carryPosition: {fileID: 8241236809903567655}
   grabPositionLeft: {fileID: 4825624029102435223}
   grabPositionRight: {fileID: 8639633190183731319}
-  grabbedEntity: {fileID: 0}
-  droppedRadius: 0.5
+  grabRadius: 2
+  droppedRadius: 1
 --- !u!95 &3542685152309896514
 Animator:
   serializedVersion: 7
