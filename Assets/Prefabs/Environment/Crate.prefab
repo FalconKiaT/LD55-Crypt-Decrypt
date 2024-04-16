@@ -92,6 +92,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
+--- !u!1 &3503993477200182193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5187723427067590175}
+  m_Layer: 8
+  m_Name: BoxCastCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5187723427067590175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503993477200182193}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4920028431810893944}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9145893188282843482
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +136,7 @@ GameObject:
   - component: {fileID: 4312024603479742045}
   - component: {fileID: 4913719234267709163}
   - component: {fileID: 922234788121974045}
+  - component: {fileID: 4224761159612175690}
   m_Layer: 8
   m_Name: Crate
   m_TagString: Objects
@@ -125,8 +157,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7762684444490082438}
   - {fileID: 6744762619740014644}
+  - {fileID: 5187723427067590175}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &681618962516115952
@@ -268,12 +300,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 345e39c9fd2ca2545ba8fb4752ef2686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   entityType: 7
+=======
+  entityType: 0
+>>>>>>> Stashed changes
   isHolding: 0
   tookDamage:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< Updated upstream
   health: 1
+=======
+  health: 0
+>>>>>>> Stashed changes
   damage: 0
   deathDelay: 0
   canFight: 0
@@ -286,6 +326,7 @@ MonoBehaviour:
     Path: 
   animator: {fileID: 0}
   rb: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!1001 &8167803339322867011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -363,4 +404,25 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1937468693824837061, guid: fdb28797de6ba954b80a2a657fdf2b1c, type: 3}
   m_PrefabInstance: {fileID: 8167803339322867011}
+=======
+--- !u!114 &4224761159612175690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+>>>>>>> Stashed changes
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145893188282843482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f546d5842a458414ea48053fd339bcfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  touching: 0
+  WeightAbove: {fileID: 0}
+  boxCastCenter: {fileID: 5187723427067590175}
+  groundCheckSize: {x: 0.79, y: 0.19}
+  layersToCheck:
+    serializedVersion: 2
+    m_Bits: 256

@@ -2,6 +2,7 @@ using FMOD;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class BasicBoneman : Summonable
 {
@@ -9,6 +10,7 @@ public class BasicBoneman : Summonable
     [SerializeField] private float grabRadius = 0.5f;
     [SerializeField] private float droppedRadius = 0.6f;
     private EnemyAI enemyAI;
+    private Seeker seekerScript;
 
     private Entity targetGrabbedEntity;
     private Entity grabbedEntity;
