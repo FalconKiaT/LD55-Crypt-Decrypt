@@ -12,13 +12,9 @@ public class Crate : Entity
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Entity")
         {
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
-        else if (collision.gameObject.tag == "Entity")
-        {
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation;  
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
     
@@ -28,15 +24,15 @@ public class Crate : Entity
         {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
+        if (collision.gameObject.tag == "Entity")
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
     }
     
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Entity")
-        {
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
-        else if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     

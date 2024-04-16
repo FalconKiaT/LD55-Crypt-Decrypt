@@ -6,7 +6,6 @@ using UnityEngine;
 public class WeightedObject : MonoBehaviour
 {
     public int weight = 1;
-    public bool touching;
 
     public WeightedObject WeightAbove;
 
@@ -23,7 +22,7 @@ public class WeightedObject : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (WeightAbove == null)
         {

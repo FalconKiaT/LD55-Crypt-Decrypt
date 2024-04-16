@@ -14,7 +14,7 @@ public class PullyPanel : MonoBehaviour
 
     public int initialPosition = 0;
     public int targetPosition = 0;
-    private WeightedObject weightAbove;
+    public WeightedObject weightAbove;
 
     private void Start()
     {
@@ -46,7 +46,7 @@ public class PullyPanel : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (weightAbove == null)
         {

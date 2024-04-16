@@ -56,6 +56,8 @@ public class Enemy : Entity
                 SoundManager.instance.PlaySound(fightingSound);
                 entity.AttackAnim(alliedAttackDirection);
             }
+
+            isInCombat = false;
         }
     }
 

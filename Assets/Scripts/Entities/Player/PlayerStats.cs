@@ -8,7 +8,6 @@ public class PlayerStats : Entity
     public override void Death()
     {
         base.Death();
-        print("died");
         Instantiate(deathfade);
     }
 }

@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     [Header("Custom Behavior")]
     public bool followEnabled = true;
     public bool jumpEnabled = true, isJumping, isInAir;
-    public bool directionLookEnabled = true;
+    public bool directionLookEnabled = false;
 
     [SerializeField] Vector3 startOffset;
 

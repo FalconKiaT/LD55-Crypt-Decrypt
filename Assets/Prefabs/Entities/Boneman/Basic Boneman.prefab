@@ -98,10 +98,10 @@ GameObject:
   - component: {fileID: 2646300312275604827}
   - component: {fileID: 3542685152309896514}
   - component: {fileID: 3371737020230124539}
+  - component: {fileID: 1161401545879848569}
   - component: {fileID: 5060061800158257045}
   - component: {fileID: 2576614720382382327}
   - component: {fileID: 1990215578547444106}
-  - component: {fileID: 1161401545879848569}
   m_Layer: 8
   m_Name: Basic Boneman
   m_TagString: Entity
@@ -226,74 +226,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5060061800158257045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8418840189395759922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e48e8cd8a3bcdf4284f4c7b5fca52a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {x: 0, y: 0, z: 0}
-  activateDistance: 50
-  pathUpdateSeconds: 0.5
-  movePrecision: 1
-  speed: 4
-  jumpForce: 5
-  nextWaypointDistance: 2
-  jumpNodeHeightRequirement: 0.5
-  jumpModifier: 20
-  jumpCheckOffset: 0
-  followEnabled: 1
-  jumpEnabled: 1
-  isJumping: 0
-  isInAir: 0
-  directionLookEnabled: 1
-  startOffset: {x: 0, y: -0.1, z: 0}
---- !u!114 &2576614720382382327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8418840189395759922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
---- !u!114 &1990215578547444106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8418840189395759922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db9d27bcdb4d61d4c9db29ae4bf37df4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1161401545879848569
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -338,8 +270,77 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7, y: 0.7}
-  m_EdgeRadius: 0.15
+  m_Size: {x: 0.73, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &5060061800158257045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8418840189395759922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e48e8cd8a3bcdf4284f4c7b5fca52a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  activateDistance: 50
+  pathUpdateSeconds: 0.5
+  movePrecision: 0.2
+  jumpCooldown: 2
+  speed: 2
+  jumpForce: 5
+  nextWaypointDistance: 2
+  jumpNodeHeightRequirement: 0.5
+  jumpModifier: 20
+  jumpCheckOffset: 0
+  followEnabled: 1
+  jumpEnabled: 1
+  isJumping: 0
+  isInAir: 0
+  directionLookEnabled: 0
+  startOffset: {x: 0, y: -0.1, z: 0}
+--- !u!114 &2576614720382382327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8418840189395759922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &1990215578547444106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8418840189395759922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db9d27bcdb4d61d4c9db29ae4bf37df4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1632552077129680269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -558,6 +559,14 @@ PrefabInstance:
     - target: {fileID: 4447842537042755934, guid: fdb28797de6ba954b80a2a657fdf2b1c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708921057331881851, guid: fdb28797de6ba954b80a2a657fdf2b1c, type: 3}
+      propertyPath: m_Size.y
+      value: 0.22200406
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708921057331881851, guid: fdb28797de6ba954b80a2a657fdf2b1c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.6188199
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

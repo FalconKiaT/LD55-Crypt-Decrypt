@@ -32,8 +32,8 @@ public class Summon : MonoBehaviour
         uiManager = GetComponent<UIManager>();
         player = gameObject.transform.parent.gameObject;
         EventData.OnSummonableDeath += refund;
-
-    }
+        bool SkeleToSpawn = false;
+}
 
     public void refund()
     {

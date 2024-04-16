@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class ArmoredBoneman : Summonable
 {
+    private EnemyAI enemyAI;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        enemyAI = GetComponent<EnemyAI>();
+    }
+
     public override void OnCommand(CommandType inputCommand, Vector2 target, Entity targetEntity)
     {
         switch (inputCommand)
         {
             case CommandType.MoveTo:
-                MoveTo(target);
+                enemyAI.target = target;
                 break;
             case CommandType.Release:
                 // TODO: IMPLEMENT

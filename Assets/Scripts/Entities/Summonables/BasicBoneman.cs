@@ -7,7 +7,7 @@ public class BasicBoneman : Summonable
 {
     [SerializeField] private Transform carryPosition, grabPositionLeft, grabPositionRight;
     [SerializeField] private Entity grabbedEntity;
-    [SerializeField] private float droppedRadius = 0.5f;
+    [SerializeField] private float droppedRadius = 0.6f;
     private GameObject dummyTransform;
     private EnemyAI enemyAI;
 
@@ -23,8 +23,11 @@ public class BasicBoneman : Summonable
 
     private void Update()
     {
-        // TODO: Handle crate release if out of a radius
-
+        
+        if (grabbedEntity != null && Vector2.Distance(grabbedEntity.transform.position, transform.position) > droppedRadius)
+        {
+            HandleCrateRelease();
+        }
     }
 
     public override void OnCommand(CommandType inputCommand, Vector2 target, Entity targetEntity)
@@ -84,8 +87,8 @@ public class BasicBoneman : Summonable
         if (targetEntity.gameObject.TryGetComponent(out Crate crate))
         {
             grabbedEntity = targetEntity;
-            grabbedEntity.rb.bodyType = RigidbodyType2D.Kinematic;
-            if ((transform.position.x - targetEntity.gameObject.transform.position.x) > 0)
+            //grabbedEntity.rb.bodyType = RigidbodyType2D.Kinematic;
+            if ((transform.position.x - targetEntity.gameObject.transform.position.x) < 0)
             {
                 targetEntity.transform.position = grabPositionRight.position;
                 targetEntity.transform.parent = grabPositionRight.transform;
