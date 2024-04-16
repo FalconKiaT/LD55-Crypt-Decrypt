@@ -59,7 +59,8 @@ public class FadeOut : MonoBehaviour
 
         }
 
-        scenesManager.LoadNextScene();
+        Debug.Log("dsaflkjd");
+        ScenesManager.instance.LoadNextLevel();
 
 
     }
@@ -73,7 +74,7 @@ public class FadeOut : MonoBehaviour
 
         }
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ScenesManager.instance.LoadCurrentScene();
 
 
     }

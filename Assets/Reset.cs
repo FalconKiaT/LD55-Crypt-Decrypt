@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Reset : MonoBehaviour
 {
-
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.R)) 
         {
-        gameObject.GetComponent<PlayerStats>().Death();
+            gameObject.GetComponent<PlayerStats>().Death();
         }
     }
 }

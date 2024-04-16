@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckPointPad : MonoBehaviour
 {
@@ -8,8 +9,9 @@ public class CheckPointPad : MonoBehaviour
     {
         if (InputManager.isInteracting && collision.tag == "Player")
         {
-            EventData.RaiseOnCheckpoint();
+            EventData.NukeBonemen();
             Camera.main.GetComponent<CameraFollow>().resetCamera();
+            ScenesManager.instance.CheckpointReached();
         }
     }
 }

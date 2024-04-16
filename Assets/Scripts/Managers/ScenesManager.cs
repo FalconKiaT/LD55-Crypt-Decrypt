@@ -3,9 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public struct youregay
+{
+    float haha;
+};
+
+
 public enum Scenes
 {
-    
+    MainMenu,           // 0
+    Level_1,            // 1
+    Level_1_Checkpoint, // 2
+    Level_2,            // 3
+    Level_2_Checkpoint  // 4
 }
 
 public class ScenesManager : MonoBehaviour
@@ -25,6 +35,8 @@ public class ScenesManager : MonoBehaviour
             Destroy(this);
         else
             instance = this;
+
+        DontDestroyOnLoad(this);
     }
 
     private void Start()
@@ -42,26 +54,6 @@ public class ScenesManager : MonoBehaviour
         // { Scenes.MainMenu, true },
     }
 
-    public bool CheckSceneUnlocked(Scenes scene)
-    {
-        if (!unlockedScenes.ContainsKey(scene))
-        {
-            Debug.LogError("Scene does not exist");
-            return false;
-        }
-
-        if (unlockedScenes[scene])
-        {
-            if (debug) Debug.Log("Player has access to scene.");
-            return true;
-        }
-        else
-        {
-            if (debug) Debug.Log("Player does not have access to this scene yet.");
-            return false;
-        }
-    }
-
     // Gets the name of the scene and loads it 
     public void LoadScene(Scenes scene)
     {
@@ -77,6 +69,14 @@ public class ScenesManager : MonoBehaviour
     public void LoadNextScene()
     {
         currentScene++;
+
+        Debug.Log(currentScene);
+        if (currentScene > 4)
+        {
+            LoadScene(Scenes.MainMenu);
+            currentScene = 0;
+        }
+
         SceneManager.LoadScene(currentScene);
     }
 
@@ -87,7 +87,17 @@ public class ScenesManager : MonoBehaviour
 
     public void CheckpointReached()
     {
-        currentScene++;
+        if (currentScene % 2 == 1)
+            currentScene++;
+    }
+
+    public void LoadNextLevel()
+    {
+        Debug.Log(currentScene);
+        if (currentScene % 2 == 1)
+            currentScene++;
+
+        LoadNextScene();
     }
 
     public void UnlockScene(Scenes scene)
@@ -99,42 +109,6 @@ public class ScenesManager : MonoBehaviour
         }
 
         unlockedScenes[scene] = true;
-    }
-
-    public void LoadLevel(int level)
-    {
-        switch (level)
-        {
-            case 1:
-                // TODO: load lvl 1
-                // LoadScene(Scenes.Level_1)
-                break;
-            case 2:
-                // TODO: load lvl 2
-                break;
-            case 3:
-                // TODO: load lvl 3
-                break;
-            default:
-                Debug.LogError("Error: Level does not exist");
-                break;
-        }
-    }
-
-    public bool CheckLevel(int level)
-    {
-        switch (level)
-        {
-            case 1:
-                // TODO: check if lvl 1 is unlocked
-                // return CheckScene(Scenes.Level_1)
-            case 2:
-                // TODO: check if lvl 2 is unlocked
-            case 3:
-                // TODO: check if lvl 3 is unlocked
-            default:
-                return false;
-        }
     }
 }
 

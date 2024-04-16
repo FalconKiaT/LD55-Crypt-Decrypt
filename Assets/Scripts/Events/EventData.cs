@@ -9,6 +9,7 @@ public static class EventData
     /// Event that will be triggered when the player dies
     /// </summary>
     public static System.Action OnPlayerDeath;
+
     public static void RaiseOnPlayerDeath() => OnPlayerDeath?.Invoke();
 
     public static System.Action<int> OnSummonableDeath;
@@ -16,7 +17,6 @@ public static class EventData
     public static void RaiseOnSummonableDeath(int bones) => OnSummonableDeath?.Invoke(bones);
 
     public static System.Action OnRaiseCheckpoint;
-    public static void RaiseOnCheckpoint() => OnRaiseCheckpoint?.Invoke();
-    //public static System.Action OnPause?????????
 
+    public static void NukeBonemen() => OnRaiseCheckpoint?.Invoke();
 }

@@ -31,10 +31,8 @@ public class ExitGate: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("LOG1");
         if(collision.gameObject.tag == "Player")
         {
-            print("LOG2");
             StartCoroutine(BeginSwitch());
             
         }
@@ -42,20 +40,19 @@ public class ExitGate: MonoBehaviour
 
     IEnumerator BeginSwitch()
     {
-        print("TEST");
         fadeout.GetComponent<FadeOut>().fade();
         yield return new WaitForSeconds(1.3f);
-    }
-        private void opengate()
-        {
-        distance = CalculateDistance(transform.position, Player.transform.position);
-
-        if (distance <= Trigdist && !triggered)
-        {
-
-            triggered = true;
-            fade();
         }
+            private void opengate()
+            {
+                distance = CalculateDistance(transform.position, Player.transform.position);
+
+            if (distance <= Trigdist && !triggered)
+            {
+
+                triggered = true;
+                fade();
+            }
     }
 
     float CalculateDistance(Vector3 obj1Position, Vector3 obj2Position)
@@ -78,7 +75,6 @@ public class ExitGate: MonoBehaviour
             currentIndex++;
             rend.sprite = sprites[currentIndex];
             yield return new WaitForSeconds(switchDelay);
-
         }
     }
 }

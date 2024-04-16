@@ -93,29 +93,6 @@ public class PullyPanel : MonoBehaviour
         }
     }
 
-    /*
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (weightAbove == null)
-        {
-            if (collision.gameObject.GetComponentInChildren<WeightedObject>() != null)
-            {
-                weightAbove = collision.gameObject.GetComponentInChildren<WeightedObject>();
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponentInChildren<WeightedObject>())
-        {
-            weightAbove = null;
-        }
-    }
-	
-	private void OnTriggerStay2D(Collider2D collision)
-    */
-
     private void MoveDown()
     {
         transform.Translate(Vector3.down * speed * Time.deltaTime);
