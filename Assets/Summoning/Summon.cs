@@ -33,7 +33,8 @@ public class Summon : MonoBehaviour
         player = gameObject.transform.parent.gameObject;
         EventData.OnSummonableDeath += refund;
         SkeleToSpawn = false;
-}
+    }
+
 
     public void refund()
     {

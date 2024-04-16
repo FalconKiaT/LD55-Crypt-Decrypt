@@ -2,6 +2,7 @@ using FMOD;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class BasicBoneman : Summonable
 {
@@ -9,7 +10,9 @@ public class BasicBoneman : Summonable
     [SerializeField] private float grabRadius = 0.5f;
     [SerializeField] private float droppedRadius = 0.6f;
     private EnemyAI enemyAI;
+    private Seeker seekerScript;
 
+    private Transform currentTarget;
     private Entity targetGrabbedEntity;
     private Entity grabbedEntity;
     private bool hasBomb;
@@ -42,6 +45,7 @@ public class BasicBoneman : Summonable
         {
             case CommandType.MoveTo:
                 enemyAI.target = target;
+                animator.SetBool("isMoving", true);
                 break;
             case CommandType.Release:
                 HandleBombRelease();
@@ -68,6 +72,7 @@ public class BasicBoneman : Summonable
             HandleBombGrab(targetEntity);
             HandleCrateGrab(targetEntity);
             targetGrabbedEntity = null;
+            animator.SetBool("isMoving", false);
         }
     }
 

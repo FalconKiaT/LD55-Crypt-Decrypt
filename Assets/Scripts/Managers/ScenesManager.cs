@@ -80,6 +80,16 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(currentScene);
     }
 
+    public void LoadCurrentScene()
+    {
+        SceneManager.LoadScene(currentScene);
+    }
+
+    public void CheckpointReached()
+    {
+        currentScene++;
+    }
+
     public void UnlockScene(Scenes scene)
     {
         if (!unlockedScenes.ContainsKey(scene))

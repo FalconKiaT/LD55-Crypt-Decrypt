@@ -1,6 +1,7 @@
 ﻿using Pathfinding;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EnemyAI : MonoBehaviour
 {

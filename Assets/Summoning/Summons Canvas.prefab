@@ -242,6 +242,7 @@ MonoBehaviour:
   - {fileID: -1525295223, guid: 49fc4872534516f47ba766382a0101f7, type: 3}
   switchDelay: 0.08
   reversed: 0
+  dying: 0
 --- !u!1 &2292768552503430749
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,7 +628,8 @@ MonoBehaviour:
   - {fileID: 542696960, guid: 49fc4872534516f47ba766382a0101f7, type: 3}
   - {fileID: -1525295223, guid: 49fc4872534516f47ba766382a0101f7, type: 3}
   switchDelay: 0.08
-  reversed: 0
+  reversed: 1
+  dying: 0
 --- !u!1 &4241232490582807814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1294,7 @@ MonoBehaviour:
         m_MethodName: setSkele
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2999714469132848069, guid: 90de2ad6f5801e44cb4066c4998e6c27, type: 3}
+          m_ObjectArgument: {fileID: 8418840189395759922, guid: 8a89067b198779841afb66b54c947616, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
