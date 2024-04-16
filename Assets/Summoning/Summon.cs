@@ -22,6 +22,7 @@ public class Summon : MonoBehaviour
     public Vector3 mouse;
 
     public bool canplace = false;
+    private bool SkeleToSpawn = false;
     public ArrayList summons = new ArrayList();
 
     void Start()
@@ -91,7 +92,7 @@ public class Summon : MonoBehaviour
             }
         }
 
-        
+        print(SkeleToSpawn);
 
 
     }
@@ -103,11 +104,15 @@ public class Summon : MonoBehaviour
 
     public void setSkele(GameObject skele)
     {
+        SkeleToSpawn = true;
+
         objectToInstantiate = skele;
     }
 
     public void setSkeleCost(int tempcost)
     {
+        SkeleToSpawn = true;
+
         cost = tempcost;
     }
 
@@ -115,14 +120,14 @@ public class Summon : MonoBehaviour
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0f; // Ensure the object is instantiated at z=0
-        if (canplace)
+        if (canplace && SkeleToSpawn)
         {
             if (removeBones(cost))
             {
                 GameObject temp = Instantiate(objectToInstantiate, mousePosition, Quaternion.identity);
                 summons.Add(temp);
-
-
+                SkeleToSpawn = false;
+                
 
                 if(objectToInstantiate.name == "Basic Boneman" || objectToInstantiate.name == "Basic Boneman(Clone)")
                 {
