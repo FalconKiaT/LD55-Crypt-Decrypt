@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1446995376940790170}
   m_Layer: 8
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1198687692522874967}
   m_Layer: 8
   m_Name: BoxCastCenter
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -404,6 +404,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1159759863505635824, guid: 2aa4dc92909479247ad5b38b27f6000f, type: 3}
+      propertyPath: m_TagString
+      value: Entity
+      objectReference: {fileID: 0}
     - target: {fileID: 4370939302263151498, guid: 2aa4dc92909479247ad5b38b27f6000f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -606,6 +610,10 @@ PrefabInstance:
     - target: {fileID: 7017736687086008797, guid: b6dcf47c76a0d8949925e544a3dcdda8, type: 3}
       propertyPath: m_Name
       value: Grab Positions
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017736687086008797, guid: b6dcf47c76a0d8949925e544a3dcdda8, type: 3}
+      propertyPath: m_TagString
+      value: Entity
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
