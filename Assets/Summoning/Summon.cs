@@ -92,10 +92,6 @@ public class Summon : MonoBehaviour
 
             }
         }
-
-        print(SkeleToSpawn);
-
-
     }
     public void setSkele(GameObject temp, int tempcost)
     {

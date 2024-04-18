@@ -719,6 +719,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 773988577}
+    - target: {fileID: 477499337800785705, guid: c7238e6236bf94b40b1bfafca31a72e0, type: 3}
+      propertyPath: fadeout
+      value: 
+      objectReference: {fileID: 1298267799}
     - target: {fileID: 2903062821415510290, guid: c7238e6236bf94b40b1bfafca31a72e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14
@@ -1454,6 +1458,11 @@ RectTransform:
 --- !u!1 &1298267798 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6428189238690751773, guid: ac681c7054d7237409b1c39e2f7f0af3, type: 3}
+  m_PrefabInstance: {fileID: 1298267795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1298267799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1766241222198788530, guid: ac681c7054d7237409b1c39e2f7f0af3, type: 3}
   m_PrefabInstance: {fileID: 1298267795}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1331933910

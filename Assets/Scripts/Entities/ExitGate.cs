@@ -42,17 +42,16 @@ public class ExitGate: MonoBehaviour
     {
         fadeout.GetComponent<FadeOut>().fade();
         yield return new WaitForSeconds(1.3f);
+    }
+    private void opengate()
+    {
+        distance = CalculateDistance(transform.position, Player.transform.position);
+
+        if (distance <= Trigdist && !triggered)
+        {
+            triggered = true;
+            fade();
         }
-            private void opengate()
-            {
-                distance = CalculateDistance(transform.position, Player.transform.position);
-
-            if (distance <= Trigdist && !triggered)
-            {
-
-                triggered = true;
-                fade();
-            }
     }
 
     float CalculateDistance(Vector3 obj1Position, Vector3 obj2Position)

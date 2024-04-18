@@ -137,4 +137,16 @@ public class BasicBoneman : Summonable
             hasCrate = false;
         }
     }
+
+    public override void Death()
+    {
+        EventData.OnRaiseCheckpoint -= Death;
+        EventData.RaiseOnSummonableDeath(boneCost);
+        if (hasCrate || hasBomb)
+        {
+            grabbedEntity.transform.parent = null;
+        }
+
+        base.Death();
+    }
 }

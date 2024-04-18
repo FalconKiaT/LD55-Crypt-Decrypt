@@ -10,6 +10,11 @@ public class Crate : Entity
         rb = GetComponent<Rigidbody2D>();   
     }
 
+    public override void Death()
+    {
+
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Entity")

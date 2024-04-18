@@ -58,13 +58,6 @@ public abstract class Summonable : Entity
         // set setboard as false to stop the boarding process
     }
 
-    public override void Death()
-    {
-        EventData.OnRaiseCheckpoint -= Death;
-        EventData.RaiseOnSummonableDeath(boneCost);
-        base.Death();
-    }
-
     private IEnumerator TESTINGMOVEMENT(Vector2 target)
     {
         float speed = 0.1f;

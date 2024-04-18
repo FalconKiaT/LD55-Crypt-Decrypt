@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 5910071472570423340}
   - component: {fileID: 3300787402626045578}
   - component: {fileID: 2944733762313115299}
+  - component: {fileID: 7897989350027418019}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -130,6 +131,8 @@ MonoBehaviour:
       Data3: 1144444811
       Data4: -253348193
     Path: event:/SFX/Player/Dying
+  animator: {fileID: 0}
+  rb: {fileID: 0}
   deathfade: {fileID: 322526864765499946, guid: 4d61cf7a1cf8676429e0175f3963e011, type: 3}
 --- !u!95 &5910071472570423340
 Animator:
@@ -217,6 +220,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.32}
   m_Size: {x: 0.9, y: 1.6376203}
   m_Direction: 0
+--- !u!114 &7897989350027418019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163747091243932267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09288619b83e5d64290e73f4fed34f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4169646509774134975
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txt: {fileID: 0}
   objectToInstantiate: {fileID: 5347575738432663612, guid: 698b88677594f7b448f3057de319b8eb, type: 3}
-  player: {fileID: 0}
+  player: {fileID: 3163747091243932267}
   minDistanceToCollider: 0.2
   cost: 0
   bones: 0
